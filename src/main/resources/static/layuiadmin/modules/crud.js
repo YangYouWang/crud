@@ -238,6 +238,39 @@ layui.extend({
             });
         },
         /**
+         * 普通文件上传
+         */
+        uploadFile: function(obj) {
+            let uploadInst = upload.render({
+                elem: '#upload-file-btn'
+                ,url: ctx + '/common/uploadFileMinIo'
+                ,before: function(obj){
+                    obj.preview(function(index, file, result){
+                        $('#upload-file').attr('href',result);//文件链接
+                    });
+                }
+                ,done: function(res){
+                    layer.msg(res.message);
+                    if (res.code === 200) {
+                        $("#" + obj).val(res.data.url);
+                    }
+                }
+                ,error: function(){
+                    //演示失败状态，并实现重传
+                    let uploadText = $('#upload-file-text');
+                    uploadText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                    uploadText.find('.demo-reload').on('click', function(){
+                        uploadInst.upload();
+                    });
+                }
+            });
+            $('#clear-file-btn').on('click',function () {
+                $('#upload-file').attr('href','');
+                $("#" + obj).val('');
+                layer.msg('清除成功');
+            });
+        },
+        /**
          * 初始化富文本编辑器
          * @param obj dom对象
          * @param data 回显数据

@@ -1,11 +1,9 @@
 package io.github.yangyouwang.module.common.controller;
 
 import com.aliyuncs.vod.model.v20170321.CreateUploadVideoResponse;
-import io.github.yangyouwang.common.annotation.CrudLog;
 import io.github.yangyouwang.common.base.CrudController;
 import io.github.yangyouwang.common.constant.ConfigConsts;
 import io.github.yangyouwang.common.domain.Result;
-import io.github.yangyouwang.common.enums.BusinessType;
 import io.github.yangyouwang.core.util.aliyun.SampleOSS;
 import io.github.yangyouwang.core.config.properties.MinioProperties;
 import io.github.yangyouwang.module.common.util.MinIoUtil;
@@ -62,7 +60,6 @@ public class CommonController extends CrudController {
      */
     @PostMapping("/uploadOSS")
     @ResponseBody
-    @CrudLog(title = "上传图片OSS",businessType = BusinessType.INSERT)
     public Result uploadOSS(MultipartFile file, @RequestParam(value = "fileDir",required = false,defaultValue = "img/def") String fileDir) {
         // 上传文件路径
         String url = sampleOSS.upload( file, fileDir);
@@ -73,11 +70,28 @@ public class CommonController extends CrudController {
     }
 
     /**
+     * 上传文件MinIo
+     */
+    @PostMapping("/uploadFileMinIo")
+    @ResponseBody
+    public Result uploadFileMinIo(MultipartFile file) throws Exception {
+        if(StringUtils.isEmpty(file.getName())){
+            return Result.failure("上传文件名称为空",file.getOriginalFilename());
+        }
+        String bucketName = minioProperties.getBucketName();
+        String fileName = minIoUtil.minioUpload(file, file.getOriginalFilename(), bucketName);
+        String url = minIoUtil.getShowUtrl(fileName, bucketName);
+        Map<String,Object> ajax = new HashMap<>(16);
+        ajax.put("fileName", fileName);
+        ajax.put("url", url);
+        return Result.success(ajax);
+    }
+
+    /**
      * 上传图片MinIo
      */
     @PostMapping("/uploadImgMinIo")
     @ResponseBody
-    @CrudLog(title = "上传图片MinIo",businessType = BusinessType.INSERT)
     public Result uploadImgMinIo(MultipartFile file) throws Exception {
         if(StringUtils.isEmpty(file.getName())){
             return Result.failure("上传文件名称为空",file.getOriginalFilename());
@@ -102,7 +116,6 @@ public class CommonController extends CrudController {
      */
     @PostMapping("/uploadVideoMinIo")
     @ResponseBody
-    @CrudLog(title = "上传视频MinIo",businessType = BusinessType.INSERT)
     public Result uploadVideoMinIo(MultipartFile file) throws Exception {
         if(StringUtils.isEmpty(file.getName())){
             return Result.failure("上传文件名称为空",file.getOriginalFilename());
@@ -124,7 +137,6 @@ public class CommonController extends CrudController {
 
     @PostMapping("/uploadVod")
     @ResponseBody
-    @CrudLog(title = "上传视频Vod",businessType = BusinessType.INSERT)
     public Result uploadVod(MultipartFile file) throws IOException {
         String fileName = file.getOriginalFilename();
         String title = fileName.substring(0, fileName.lastIndexOf("."));
