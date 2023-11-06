@@ -83,13 +83,6 @@ aliyun:
   vod:
     accessKeyId: xxx #视频服务 accessKeyId
     accessKeySecret: xxx #视频服务 accessKeySecret
-# 配置代码生成
-code-generator:
-  url: jdbc:mysql://localhost:3306/crud?useUnicode=true&useSSL=false&characterEncoding=utf8
-  driver-name: com.mysql.jdbc.Driver
-  username: root
-  password: 123456
-  author: yangyouwang
 # 图片服务器
 minio:
   endpoint: http://127.0.0.1:9000/

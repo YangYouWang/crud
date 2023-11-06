@@ -56,7 +56,7 @@ spring:
     job-store-type: jdbc
     #初始化表结构.初次使用的时候会在库中生成表格,后期注释掉即可.或者初始使用值为always,然后将值改为never
     jdbc:
-      initialize-schema: never
+      initialize-schema: always
   main:
     allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
 ##############################################
