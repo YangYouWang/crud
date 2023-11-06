@@ -178,9 +178,6 @@ sec:authorize="hasAuthority('权限标识')" // thymeleaf声明
     字典管理
    ![运行截图](https://gitee.com/yangyouwang/crud/raw/master/src/main/resources/static/img/12.png "12.png")
 
-    代码生成
-   ![运行截图](https://gitee.com/yangyouwang/crud/raw/master/src/main/resources/static/img/17.png "17.png")
-
     登录日志管理
    ![运行截图](https://gitee.com/yangyouwang/crud/raw/master/src/main/resources/static/img/11.png "11.png")
 
