@@ -11,9 +11,10 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
- * Description: JOB 抽象类 <br/>
+ * Description: JOB抽象类 <br/>
  * date: 2022/10/30 1:33<br/>
  *
  * @author yangyouwang<br />
@@ -62,7 +63,7 @@ public abstract class AbstractQuartzJob implements Job {
         taskLog.setCreateTime(startTime);
         taskLog.setUpdateTime(new Date());
         long runMs = taskLog.getUpdateTime().getTime() - taskLog.getCreateTime().getTime();
-        taskLog.setTaskMessage(task.getJobName() + " 总共耗时：" + runMs + "毫秒");
+        taskLog.setTaskMessage(task.getJobName() + " 总共耗时：" + TimeUnit.MILLISECONDS.toSeconds(runMs) + "秒");
         if (null != ex) {
             taskLog.setStatus(ConfigConsts.ERROR_STATUS);
             taskLog.setExceptionInfo(ex.getMessage());
