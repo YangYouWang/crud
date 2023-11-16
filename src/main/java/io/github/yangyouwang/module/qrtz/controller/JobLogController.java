@@ -50,7 +50,7 @@ public class JobLogController extends CrudController {
           @ApiImplicitParam(name = "page", value = "第几页", dataType = "Integer", paramType="query"),
           @ApiImplicitParam(name = "limit", value = "每页记录数", dataType = "Integer", paramType="query")
   })
-  @PreAuthorize("hasAuthority('jobLog:list')")
+  @PreAuthorize("hasAuthority('job:list')")
   @GetMapping(value = "/page")
   @ResponseBody
   public TableDataInfo page(QrtzJobLog param) {

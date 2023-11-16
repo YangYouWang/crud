@@ -88,10 +88,10 @@
                 {field: 'jobName', title: '任务名称'},
                 {field: 'jobGroup', title: '任务组名'},
                 {field: 'jobClassName', title: '类名称'},
-                {field: 'taskMessage', title: '日志信息'},
-                {field: 'status', title: '执行状态', templet: function (d) { return crud.getDictValue('executeStatus',d.status);}},
+                {field: 'taskMessage', title: '日志信息', width: 300},
+                {field: 'status', title: '执行状态', width: 100, templet: function (d) { return crud.getDictValue('executeStatus',d.status);}},
                 {field: 'exceptionInfo', title: '异常信息'},
-                {toolbar: '#tableBar', title: '操作', width: 300, align:'center',fixed: 'right'}
+                {toolbar: '#tableBar', title: '操作', width: 100, align:'center',fixed: 'right'}
             ]]
         });
         //头工具栏事件
