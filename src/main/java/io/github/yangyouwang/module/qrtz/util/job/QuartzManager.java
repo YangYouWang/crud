@@ -118,14 +118,19 @@ public class QuartzManager {
      * @param task 任务实体类
      */
     public void updateJobCron(QrtzJob task) throws SchedulerException {
+        // 暂停定时任务
+        scheduler.pauseJob(getJobKey(task.getJobName(), task.getJobGroup()));
+        // 修改定时任务
         TriggerKey triggerKey = TriggerKey.triggerKey(task.getJobName(), task.getJobGroup());
         CronTrigger trigger = (CronTrigger) scheduler.getTrigger(triggerKey);
         CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(task.getCron());
         trigger = trigger.getTriggerBuilder().withIdentity(triggerKey).withSchedule(scheduleBuilder).build();
         scheduler.rescheduleJob(triggerKey, trigger);
-        //暂停任务
-        if(!ConfigConsts.SYS_YES.equals(task.getEnabled())){
-            scheduler.pauseJob(getJobKey(task.getJobName(), task.getJobGroup()));
+        // 根据状态判断是否要执行任务
+        if(ConfigConsts.SYS_YES.equals(task.getEnabled())) {
+            this.resumeJob(task);
+        } else {
+            this.pauseJob(task);
         }
     }
 }
