@@ -1,7 +1,6 @@
 package io.github.yangyouwang.core.security.util;
 
 import io.github.yangyouwang.common.constant.JwtConsts;
-import io.github.yangyouwang.common.domain.ApiContext;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -17,7 +16,9 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @program: crud
@@ -27,7 +28,9 @@ import java.util.UUID;
  **/
 public class JwtTokenUtil {
 
-    private static Logger logger = LoggerFactory.getLogger(JwtTokenUtil.class);
+    private static final Logger logger = LoggerFactory.getLogger(JwtTokenUtil.class);
+
+    private static final Map<String, Long> USER_ID_TOKEN_MAP = new ConcurrentHashMap<>(1 << 2);
 
     /**
      * JWT 加解密类型
@@ -79,11 +82,11 @@ public class JwtTokenUtil {
         if (duration != null) {
             exp = (nbf == null ? iat.plusSeconds(duration) : new DateTime(nbf).plusSeconds(duration));
         }
-
+        String uuidIdKey = UUID.randomUUID().toString();
         // 获取JWT字符串
         String compact = Jwts.builder()
                 .signWith(alg, key)
-                .setSubject(sub)
+                .setSubject(uuidIdKey)
                 .setAudience(aud)
                 .setId(jti)
                 .setIssuer(iss)
@@ -91,7 +94,8 @@ public class JwtTokenUtil {
                 .setIssuedAt(iat.toDate())
                 .setExpiration(exp != null ? exp.toDate() : null)
                 .compact();
-
+        //改用UUID设置ID
+        USER_ID_TOKEN_MAP.put(uuidIdKey, Long.parseLong(sub));
         // 在JWT字符串前添加"Bearer "字符串，用于加入"Authorization"请求头
         return JwtConsts.JWT_SEPARATOR + compact;
     }
@@ -201,11 +205,13 @@ public class JwtTokenUtil {
 
     /**
      * 获取token
+     *
      * @param token token
      */
-    public static void parseJWT(String token) {
+    public static Long parseJWT(String token) {
         SecretKey key = generateKey(JWT_ALG, JwtConsts.SECRET);
         Claims claims = parseJWT(key, token).getBody();
-        ApiContext.setUserId(Long.parseLong(claims.getSubject()));
+        //从token解析 UUID ,然后从 map 获取
+        return USER_ID_TOKEN_MAP.get(claims.getSubject());
     }
 }

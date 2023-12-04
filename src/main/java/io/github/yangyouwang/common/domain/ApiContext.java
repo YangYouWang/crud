@@ -1,26 +1,26 @@
 package io.github.yangyouwang.common.domain;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 /**
  * 获取userId上下文环境
+ *
  * @author yangyouwang
  */
 public class ApiContext {
 
-    private static final String API_CONTEXT_KEY = "userId";
-
-    private static final Map<String, Object> CONTEXT = new ConcurrentHashMap<>(16);
+    private static final InheritableThreadLocal<Long> userThreadLocal = new InheritableThreadLocal<>();
 
     public static void setUserId(Long userId) {
-        CONTEXT.put(API_CONTEXT_KEY, userId);
+        userThreadLocal.set(userId);
     }
 
     public static Long getUserId() {
-        if (CONTEXT.containsKey(API_CONTEXT_KEY)) {
-            return Long.parseLong(CONTEXT.get(API_CONTEXT_KEY).toString());
-        }
-        return null;
+        return userThreadLocal.get();
+    }
+
+    /**
+     * 删除当前登录用户方法  在拦截器方法执行后 移除当前用户对象
+     */
+    public static void remove() {
+        userThreadLocal.remove();
     }
 }
