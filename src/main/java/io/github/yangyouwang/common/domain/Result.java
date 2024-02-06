@@ -109,10 +109,11 @@ public class Result<T> {
 
     /***
      * 返回自定义状态
-     * @param resultStatus 状态枚举
+     * @param code 状态码
+     * @param message 消息
      * @return 消息
      */
-    public static <T> Result<T> ok(ResultStatus resultStatus) {
-        return new Result<>(resultStatus, null);
+    public static <T> Result<T> ok(Integer code, String message) {
+        return new Result<>(code, message, null);
     }
 }

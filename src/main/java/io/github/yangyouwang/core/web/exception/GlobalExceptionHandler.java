@@ -56,7 +56,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public Result exceptionHandler(CrudException e){
         log.error("自定义异常信息！原因是:",e);
-        return Result.ok(e.getResultStatus());
+        return Result.ok(e.getCode(), e.getMessage());
     }
 
     /**

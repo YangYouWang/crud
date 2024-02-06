@@ -64,7 +64,7 @@ public class SysDeptService extends ServiceImpl<SysDeptMapper, SysDept> {
     int count = this.count(new LambdaQueryWrapper<SysDept>()
             .eq(SysDept::getParentId, id));
     if (count != 0) {
-      throw new CrudException(ResultStatus.DATA_EXIST_ERROR);
+      throw new CrudException("存在部门,删除失败!");
     }
     removeById(id);
   }

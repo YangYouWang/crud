@@ -11,18 +11,41 @@ import io.github.yangyouwang.common.enums.ResultStatus;
  */
 public class CrudException extends RuntimeException {
 
-    private ResultStatus resultStatus;
+    /**
+     * 业务异常码
+     * */
+    public Integer code;
+    /**
+     * 业务异常信息描述
+     *  */
+    public String message;
 
     public CrudException(ResultStatus resultStatus) {
         super(resultStatus.getMessage());
-        this.resultStatus = resultStatus;
+        this.code = resultStatus.getCode();
+        this.message = resultStatus.getMessage();
     }
 
-    public ResultStatus getResultStatus() {
-        return resultStatus;
+    public CrudException(String message) {
+        super(message);
+        this.code = ResultStatus.ERROR.getCode();
+        this.message = message;
     }
 
-    public void setResultStatus(ResultStatus resultStatus) {
-        this.resultStatus = resultStatus;
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

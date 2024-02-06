@@ -15,31 +15,15 @@ public enum ResultStatus {
     /**
      * 成功响应
      */
-    SUCCESS(200, "OK"),
+    SUCCESS(200, "操作成功"),
     /**
      * 失败响应
      */
-    ERROR(500, "Server Error"),
+    ERROR(500, "系统错误"),
     /**
      * 无权限响应
      */
-    NO_PERMISSION(401,"无权限"),
-    /**
-     * 新增数据出错
-     */
-    SAVE_DATA_ERROR(501,"新增数据出错"),
-    /**
-     * 修改数据出错
-     */
-    UPDATE_DATA_ERROR(502,"修改数据出错"),
-    /**
-     * 删除数据出错
-     */
-    DELETE_DATA_ERROR(503,"删除数据出错"),
-    /**
-     * 当前层级存在下级节点
-     */
-    DATA_EXIST_ERROR(504,"当前层级存在下级节点");
+    NO_PERMISSION(401,"无权限");
 
     /**
      * 业务异常码
