@@ -387,4 +387,19 @@ INSERT INTO `sys_user_post` VALUES (1, 2);
 INSERT INTO `sys_user_post` VALUES (24, 1);
 INSERT INTO `sys_user_post` VALUES (24, 2);
 
+-- ----------------------------
+-- Table structure for persistent_logins
+-- ----------------------------
+DROP TABLE IF EXISTS `persistent_logins`;
+CREATE TABLE `persistent_logins` (
+  `username` varchar(65) DEFAULT NULL,
+  `series` varchar(65) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `token` varchar(255) DEFAULT NULL,
+  `last_used` datetime DEFAULT NULL,
+  PRIMARY KEY (`series`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin COMMENT = '记住我' ROW_FORMAT = Dynamic;
+-- ----------------------------
+-- Records of persistent_logins
+-- ----------------------------
+
 SET FOREIGN_KEY_CHECKS = 1;

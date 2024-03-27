@@ -13,8 +13,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 
 /**
  * @author yangyouwang
@@ -39,6 +41,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource
     private ValidateCodeFilter validateCodeFilter;
+
+    @Resource
+    private DataSource dataSource;
 
     /**
      * 密码加密
@@ -108,6 +113,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .tokenValiditySeconds(3600 * 24 * 7)
                 // 开启记住我功能
                 .rememberMeParameter("remember-me")
+                .key("salt")
+                .tokenRepository(jdbcTokenRepository())
                 .and()
                 //禁用csrf
                 .csrf().disable()
@@ -118,5 +125,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 //session失效默认的跳转地址
                 .invalidSessionUrl("/loginPage");
+    }
+
+    @Bean
+    public JdbcTokenRepositoryImpl jdbcTokenRepository() {
+        JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
+        jdbcTokenRepository.setDataSource(dataSource);
+        return jdbcTokenRepository;
     }
 }
