@@ -124,7 +124,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 配置session管理
                 .sessionManagement()
                 //session失效默认的跳转地址
-                .invalidSessionUrl("/loginPage");
+                .invalidSessionUrl("/loginPage")
+                .and()
+                // 允许跨域访问
+                .cors();
     }
 
     @Bean
