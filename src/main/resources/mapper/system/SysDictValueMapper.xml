@@ -17,7 +17,7 @@
     <select id="findSysDictValueByDictTypeId" resultMap="BaseResultMap">
       select id, dict_type_id, dict_value_key, dict_value_name, enabled, create_by, create_time,update_by, update_time, remark
       from sys_dict_value
-      where deleted = 0 and enabled = 'Y' and dict_type_id = #{dictTypeId}
+      where deleted = 0 and dict_type_id = #{dictTypeId}
       order by order_num asc
     </select>
 </mapper>
