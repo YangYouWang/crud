@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>选择节点</title>
+    <title>选择</title>
     <div th:replace="common/link::header"></div>
+    <style>
+        .layui-row {
+            height: 435px;
+        }
+        .ztree {
+            height: 436px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        .ztree::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <div class="layui-fluid">
     <div class="layui-card">
         <div class="layui-card-body">
-            <div id="deptTree" class="ztree"></div>
+            <div class="layui-row">
+                <div id="deptTree" class="ztree"></div>
+            </div>
         </div>
     </div>
 </div>
