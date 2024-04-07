@@ -33,7 +33,6 @@ public class SysLoginLogService extends ServiceImpl<SysLoginLogMapper, SysLoginL
           // 登录IP
           .like(!StringUtils.isEmpty(param.getLoginIp()), SysLoginLog::getLoginIp, param.getLoginIp())
           .orderByDesc(SysLoginLog::getCreateTime);
-    ;
     return list(queryWrapper);
   }
 }

@@ -152,7 +152,7 @@ layui.extend({
                 ,content: ctx + '/common/treePage?url=' +url
                 ,maxmin: true
                 ,scrollbar: false
-                ,area: ['30%', '80%']
+                ,area: ['20%', '70%']
                 ,btn: ['确定', '取消']
                 ,yes: function(index, layero){
                     let result = window["layui-layer-iframe" + index].getData();
