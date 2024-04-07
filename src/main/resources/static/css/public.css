@@ -64,16 +64,9 @@
 .layui-card {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 95vh;
     overflow-y: auto;
 }
 .layui-card::-webkit-scrollbar {
     display: none;
-}
-.layui-card-header {
-    height: 50px;
-    flex: 0 0 auto;
-}
-.layui-card-body {
-    flex-grow: 1;
 }
