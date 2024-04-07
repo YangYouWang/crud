@@ -3,7 +3,7 @@ package io.github.yangyouwang.module.system.service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.yangyouwang.common.domain.XmSelectNode;
-import io.github.yangyouwang.core.util.StringUtil;
+import io.github.yangyouwang.framework.util.StringUtil;
 import io.github.yangyouwang.module.system.entity.SysUserRole;
 import io.github.yangyouwang.module.system.mapper.SysRoleMapper;
 import io.github.yangyouwang.module.system.mapper.SysRoleMenuMapper;

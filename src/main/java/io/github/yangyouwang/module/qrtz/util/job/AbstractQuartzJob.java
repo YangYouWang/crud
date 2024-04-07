@@ -1,7 +1,7 @@
 package io.github.yangyouwang.module.qrtz.util.job;
 
 import io.github.yangyouwang.common.constant.ConfigConsts;
-import io.github.yangyouwang.core.util.SpringUtils;
+import io.github.yangyouwang.framework.util.SpringUtils;
 import io.github.yangyouwang.module.qrtz.entity.QrtzJob;
 import io.github.yangyouwang.module.qrtz.entity.QrtzJobLog;
 import io.github.yangyouwang.module.qrtz.service.JobLogService;

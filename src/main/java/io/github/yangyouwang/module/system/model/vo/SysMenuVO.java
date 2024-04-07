@@ -1,7 +1,7 @@
 package io.github.yangyouwang.module.system.model.vo;
 
 
-import io.github.yangyouwang.core.util.converter.Treeable;
+import io.github.yangyouwang.framework.util.converter.Treeable;
 import io.github.yangyouwang.module.system.entity.SysMenu;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package io.github.yangyouwang.common.domain;
 
-import io.github.yangyouwang.core.util.converter.Treeable;
+import io.github.yangyouwang.framework.util.converter.Treeable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

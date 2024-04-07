@@ -3,7 +3,7 @@ package io.github.yangyouwang.module.system.service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.github.yangyouwang.common.constant.ConfigConsts;
 import io.github.yangyouwang.common.domain.XmSelectNode;
-import io.github.yangyouwang.core.util.StringUtil;
+import io.github.yangyouwang.framework.util.StringUtil;
 import io.github.yangyouwang.module.system.entity.SysPost;
 import io.github.yangyouwang.module.system.mapper.SysPostMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

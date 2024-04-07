@@ -4,10 +4,10 @@ import com.aliyuncs.vod.model.v20170321.CreateUploadVideoResponse;
 import io.github.yangyouwang.common.base.CrudController;
 import io.github.yangyouwang.common.constant.ConfigConsts;
 import io.github.yangyouwang.common.domain.Result;
-import io.github.yangyouwang.core.util.aliyun.SampleOSS;
-import io.github.yangyouwang.core.config.properties.MinioProperties;
-import io.github.yangyouwang.module.common.util.MinIoUtil;
-import io.github.yangyouwang.core.util.aliyun.SampleVod;
+import io.github.yangyouwang.framework.util.aliyun.SampleOSS;
+import io.github.yangyouwang.framework.config.properties.MinioProperties;
+import io.github.yangyouwang.module.common.service.MinIoService;
+import io.github.yangyouwang.framework.util.aliyun.SampleVod;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -35,7 +35,7 @@ public class CommonController extends CrudController {
 
     private final SampleOSS sampleOSS;
 
-    private final MinIoUtil minIoUtil;
+    private final MinIoService minIoService;
 
     private final MinioProperties minioProperties;
 
@@ -79,8 +79,8 @@ public class CommonController extends CrudController {
             return Result.failure("上传文件名称为空",file.getOriginalFilename());
         }
         String bucketName = minioProperties.getBucketName();
-        String fileName = minIoUtil.minioUpload(file, file.getOriginalFilename(), bucketName);
-        String url = minIoUtil.getShowUtrl(fileName, bucketName);
+        String fileName = minIoService.minioUpload(file, file.getOriginalFilename(), bucketName);
+        String url = minIoService.getShowUtrl(fileName, bucketName);
         Map<String,Object> ajax = new HashMap<>(16);
         ajax.put("fileName", fileName);
         ajax.put("url", url);
@@ -102,8 +102,8 @@ public class CommonController extends CrudController {
             return Result.failure("上传文件不符合规范",file.getOriginalFilename());
         }
         String bucketName = minioProperties.getBucketName();
-        String fileName = minIoUtil.minioUpload(file, file.getOriginalFilename(), bucketName);
-        String url = minIoUtil.getShowUtrl(fileName, bucketName);
+        String fileName = minIoService.minioUpload(file, file.getOriginalFilename(), bucketName);
+        String url = minIoService.getShowUtrl(fileName, bucketName);
         Map<String,Object> ajax = new HashMap<>(16);
         ajax.put("fileName", fileName);
         ajax.put("url", url);
@@ -127,8 +127,8 @@ public class CommonController extends CrudController {
         }
         // TODO: 2022/12/8 视频切片
         String bucketName = minioProperties.getBucketName();
-        String fileName = minIoUtil.minioUpload(file, file.getOriginalFilename(), bucketName);
-        String url = minIoUtil.getShowUtrl(fileName, bucketName);
+        String fileName = minIoService.minioUpload(file, file.getOriginalFilename(), bucketName);
+        String url = minIoService.getShowUtrl(fileName, bucketName);
         Map<String,Object> ajax = new HashMap<>(16);
         ajax.put("fileName", fileName);
         ajax.put("url", url);

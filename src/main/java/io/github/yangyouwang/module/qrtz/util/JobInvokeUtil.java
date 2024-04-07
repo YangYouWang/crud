@@ -1,6 +1,6 @@
 package io.github.yangyouwang.module.qrtz.util;
 
-import io.github.yangyouwang.core.util.SpringUtils;
+import io.github.yangyouwang.framework.util.SpringUtils;
 import io.github.yangyouwang.module.qrtz.entity.QrtzJob;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.CollectionUtils;
