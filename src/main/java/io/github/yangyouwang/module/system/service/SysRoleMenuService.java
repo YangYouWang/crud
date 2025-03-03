@@ -24,7 +24,7 @@ public class SysRoleMenuService extends ServiceImpl<SysRoleMenuMapper, SysRoleMe
     private SysRoleMenuMapper sysRoleMenuMapper;
 
     /**
-     * 删除角色菜单
+     * 根据角色ID删除关联关系
      * @param roleId 角色主键
      */
     public void removeSysRoleMenuByRoleId(Long ... roleId) {
@@ -48,5 +48,13 @@ public class SysRoleMenuService extends ServiceImpl<SysRoleMenuMapper, SysRoleMe
             }).collect(Collectors.toList());
             sysRoleMenuMapper.insertBatchSomeColumn(roleMenus);
         }
+    }
+
+    /**
+     * 根据菜单ID删除关联关系
+     * @param menuId 菜单主键
+     */
+    public void removeSysRoleMenuByMenuId(Long ... menuId) {
+        sysRoleMenuMapper.delete(new LambdaQueryWrapper<SysRoleMenu>().in(SysRoleMenu::getMenuId, menuId));
     }
 }

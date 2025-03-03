@@ -4,12 +4,12 @@ import io.github.yangyouwang.common.enums.ResultStatus;
 
 /**
  * @author yangyouwang
- * @title: CrudException
+ * @title: BusinessException
  * @projectName crud
- * @description: 自定义异常
+ * @description: 自定义业务异常
  * @date 2021/3/3010:10 PM
  */
-public class CrudException extends RuntimeException {
+public class BusinessException extends RuntimeException {
 
     /**
      * 业务异常码
@@ -20,13 +20,13 @@ public class CrudException extends RuntimeException {
      *  */
     public String message;
 
-    public CrudException(ResultStatus resultStatus) {
+    public BusinessException(ResultStatus resultStatus) {
         super(resultStatus.getMessage());
         this.code = resultStatus.getCode();
         this.message = resultStatus.getMessage();
     }
 
-    public CrudException(String message) {
+    public BusinessException(String message) {
         super(message);
         this.code = ResultStatus.ERROR.getCode();
         this.message = message;

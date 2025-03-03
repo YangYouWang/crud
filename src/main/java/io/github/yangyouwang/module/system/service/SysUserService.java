@@ -198,6 +198,7 @@ public class SysUserService extends ServiceImpl<SysUserMapper, SysUser> implemen
             throw new RuntimeException(e.getMessage());
         }
     }
+
     /**
      * 修改密码
      * @param modifyPassDTO 修改密码对象
@@ -227,6 +228,7 @@ public class SysUserService extends ServiceImpl<SysUserMapper, SysUser> implemen
         this.updateById(sysUser);
         return String.format("密码重置为：%s",ConfigConsts.DEFAULT_PASSWORD);
     }
+
     /**
      * 根据用户ids查询选中用户列表
      * @param ids 用户ids

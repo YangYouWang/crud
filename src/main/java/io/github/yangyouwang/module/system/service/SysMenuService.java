@@ -8,12 +8,10 @@ import io.github.yangyouwang.common.constant.ConfigConsts;
 import io.github.yangyouwang.common.domain.TreeSelectNode;
 import io.github.yangyouwang.framework.util.converter.ListToTree;
 import io.github.yangyouwang.framework.util.converter.impl.ListToTreeImpl;
-import io.github.yangyouwang.framework.web.exception.CrudException;
+import io.github.yangyouwang.framework.web.exception.BusinessException;
 import io.github.yangyouwang.framework.util.StringUtil;
 import io.github.yangyouwang.module.system.mapper.SysMenuMapper;
-import io.github.yangyouwang.module.system.mapper.SysRoleMenuMapper;
 import io.github.yangyouwang.module.system.entity.SysMenu;
-import io.github.yangyouwang.module.system.entity.SysRoleMenu;
 import io.github.yangyouwang.module.system.model.vo.SysMenuVO;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
@@ -45,7 +43,7 @@ public class SysMenuService extends ServiceImpl<SysMenuMapper, SysMenu> {
     private SysMenuMapper sysMenuMapper;
 
     @Resource
-    private SysRoleMenuMapper sysRoleMenuMapper;
+    private SysRoleMenuService sysRoleMenuService;
 
     /**
      * 根据用户查询菜单
@@ -83,12 +81,11 @@ public class SysMenuService extends ServiceImpl<SysMenuMapper, SysMenu> {
         int count = this.count(new LambdaQueryWrapper<SysMenu>()
                 .eq(SysMenu::getParentId, id));
         if (count != 0) {
-            throw new CrudException("存在菜单,删除失败!");
+            throw new BusinessException("存在菜单,删除失败!");
         }
-        this.removeById(id);
-        // 删除角色关联菜单
-        sysRoleMenuMapper.delete(new LambdaQueryWrapper<SysRoleMenu>()
-                .eq(SysRoleMenu::getMenuId, id));
+        if (this.removeById(id)) {
+            sysRoleMenuService.removeSysRoleMenuByMenuId(id);
+        }
     }
     /**
      * 查询菜单列表

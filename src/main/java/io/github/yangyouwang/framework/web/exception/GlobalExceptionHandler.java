@@ -52,9 +52,9 @@ public class GlobalExceptionHandler {
     /**
      * 抛出自定义异常
      */
-    @ExceptionHandler(value = CrudException.class)
+    @ExceptionHandler(value = BusinessException.class)
     @ResponseBody
-    public Result exceptionHandler(CrudException e){
+    public Result exceptionHandler(BusinessException e){
         log.error("自定义异常信息！原因是:",e);
         return Result.ok(e.getCode(), e.getMessage());
     }

@@ -4,27 +4,26 @@
 INSERT INTO `sys_dict_type` VALUES (17, 'sex', '性别', 1, 'Y', 'admin', '2021-04-16 12:27:04', 'admin', '2022-06-25 21:47:42', 0, '性别字典');
 INSERT INTO `sys_dict_type` VALUES (18, 'menuType', '菜单类型', 2, 'Y', 'admin', '2021-04-16 20:42:06', 'admin', '2022-06-25 22:43:44', 0, '菜单类型');
 INSERT INTO `sys_dict_type` VALUES (19, 'enabled', '是否启用', 3, 'Y', 'admin', '2021-04-29 21:00:41', 'admin', '2021-12-09 23:51:44', 0, '是否启用');
-INSERT INTO `sys_dict_type` VALUES (21, 'noticeType', '公告类型', 5, 'Y', 'admin', '2022-10-04 20:46:07', 'admin', '2022-10-04 22:18:42', 0, '公告类型');
-INSERT INTO `sys_dict_type` VALUES (22, 'executeStatus', '执行状态', 6, 'Y', 'admin', '2022-10-26 18:17:07', '', NULL, 0, '执行状态');
-INSERT INTO `sys_dict_type` VALUES (23, 'sysYesNo', '系统是否', 7, 'Y', 'admin', '2022-12-07 04:01:25', 'admin', '2022-12-08 00:02:29', 0, '');
+INSERT INTO `sys_dict_type` VALUES (20, 'noticeType', '公告类型', 5, 'Y', 'admin', '2022-10-04 20:46:07', 'admin', '2022-10-04 22:18:42', 0, '公告类型');
+INSERT INTO `sys_dict_type` VALUES (21, 'executeStatus', '执行状态', 6, 'Y', 'admin', '2022-10-26 18:17:07', '', NULL, 0, '执行状态');
+INSERT INTO `sys_dict_type` VALUES (22, 'sysYesNo', '系统是否', 7, 'Y', 'admin', '2022-12-07 04:01:25', 'admin', '2022-12-08 00:02:29', 0, '');
 
 -- ----------------------------
 -- Records of sys_dict_value
 -- ----------------------------
-INSERT INTO `sys_dict_value` VALUES (22, 17, '1', '男', 1, 'Y', 'admin', '2022-06-25 01:58:53', 'admin', '2022-12-05 18:14:08', 0, '');
-INSERT INTO `sys_dict_value` VALUES (23, 17, '2', '女', 2, 'Y', 'admin', '2022-06-25 01:59:02', 'admin', '2022-12-05 18:14:19', 0, '');
-INSERT INTO `sys_dict_value` VALUES (24, 18, 'M', '目录', 1, 'Y', 'admin', '2022-06-25 21:56:49', 'admin', '2022-06-25 21:56:49', 0, NULL);
-INSERT INTO `sys_dict_value` VALUES (25, 18, 'C', '菜单', 2, 'Y', 'admin', '2022-06-25 21:28:28', 'admin', '2022-06-25 21:28:28', 0, NULL);
-INSERT INTO `sys_dict_value` VALUES (26, 18, 'F', '按钮', 3, 'Y', 'admin', '2022-06-25 21:28:30', 'admin', '2022-06-25 21:28:30', 0, NULL);
-INSERT INTO `sys_dict_value` VALUES (27, 17, '0', '未知', 0, 'Y', 'admin', '2022-06-25 01:26:22', 'admin', '2022-12-05 18:14:28', 0, '');
-INSERT INTO `sys_dict_value` VALUES (30, 19, 'Y', '启用', 1, 'Y', 'admin', '2022-06-25 21:29:01', 'admin', '2022-06-25 21:29:01', 0, NULL);
-INSERT INTO `sys_dict_value` VALUES (31, 19, 'N', '禁用', 2, 'Y', 'admin', '2022-06-25 21:29:13', 'admin', '2022-06-25 21:29:13', 0, NULL);
-INSERT INTO `sys_dict_value` VALUES (34, 21, '1', '通知', 1, 'Y', 'admin', '2022-06-25 21:29:01', 'admin', '2022-06-25 21:29:01', 0, '');
-INSERT INTO `sys_dict_value` VALUES (35, 21, '2', '公告', 2, 'Y', 'admin', '2022-06-25 21:29:01', 'admin', '2022-06-25 21:29:01', 0, '');
-INSERT INTO `sys_dict_value` VALUES (36, 22, '0', '正常', 1, 'Y', 'admin', '2022-06-25 21:29:01', 'admin', '2022-06-25 21:29:01', 0, '正常');
-INSERT INTO `sys_dict_value` VALUES (37, 22, '1', '失败', 2, 'Y', 'admin', '2022-06-25 21:29:01', 'admin', '2022-06-25 21:29:01', 0, '失败');
-INSERT INTO `sys_dict_value` VALUES (40, 23, 'Y', '是', 1, 'Y', 'admin', '2022-12-08 00:02:02', '', NULL, 0, '');
-INSERT INTO `sys_dict_value` VALUES (41, 23, 'N', '否', 2, 'Y', 'admin', '2022-12-08 00:02:11', '', NULL, 0, '');
+INSERT INTO `sys_dict_value` VALUES (1, 17, '1', '男', 1, 'Y', 'admin', '2022-06-25 01:58:53', 'admin', '2022-12-05 18:14:08', 0, '');
+INSERT INTO `sys_dict_value` VALUES (2, 17, '2', '女', 2, 'Y', 'admin', '2022-06-25 01:59:02', 'admin', '2022-12-05 18:14:19', 0, '');
+INSERT INTO `sys_dict_value` VALUES (3, 18, 'M', '目录', 1, 'Y', 'admin', '2022-06-25 21:56:49', 'admin', '2022-06-25 21:56:49', 0, NULL);
+INSERT INTO `sys_dict_value` VALUES (4, 18, 'C', '菜单', 2, 'Y', 'admin', '2022-06-25 21:28:28', 'admin', '2022-06-25 21:28:28', 0, NULL);
+INSERT INTO `sys_dict_value` VALUES (5, 18, 'F', '按钮', 3, 'Y', 'admin', '2022-06-25 21:28:30', 'admin', '2022-06-25 21:28:30', 0, NULL);
+INSERT INTO `sys_dict_value` VALUES (6, 19, 'Y', '启用', 1, 'Y', 'admin', '2022-06-25 21:29:01', 'admin', '2022-06-25 21:29:01', 0, NULL);
+INSERT INTO `sys_dict_value` VALUES (7, 19, 'N', '禁用', 2, 'Y', 'admin', '2022-06-25 21:29:13', 'admin', '2022-06-25 21:29:13', 0, NULL);
+INSERT INTO `sys_dict_value` VALUES (8, 20, '1', '通知', 1, 'Y', 'admin', '2022-06-25 21:29:01', 'admin', '2022-06-25 21:29:01', 0, '');
+INSERT INTO `sys_dict_value` VALUES (9, 20, '2', '公告', 2, 'Y', 'admin', '2022-06-25 21:29:01', 'admin', '2022-06-25 21:29:01', 0, '');
+INSERT INTO `sys_dict_value` VALUES (10, 21, '0', '正常', 1, 'Y', 'admin', '2022-06-25 21:29:01', 'admin', '2022-06-25 21:29:01', 0, '正常');
+INSERT INTO `sys_dict_value` VALUES (11, 21, '1', '失败', 2, 'Y', 'admin', '2022-06-25 21:29:01', 'admin', '2022-06-25 21:29:01', 0, '失败');
+INSERT INTO `sys_dict_value` VALUES (12, 22, 'Y', '是', 1, 'Y', 'admin', '2022-12-08 00:02:02', '', NULL, 0, '');
+INSERT INTO `sys_dict_value` VALUES (13, 22, 'N', '否', 2, 'Y', 'admin', '2022-12-08 00:02:11', '', NULL, 0, '');
 
 -- ----------------------------
 -- Records of sys_menu
@@ -80,8 +79,8 @@ INSERT INTO `sys_menu` VALUES (3079, '调度', 3043, 6, '', '#', 'F', 'Y', 'job:
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES (1, '超级管理员', 'ADMIN', '', NULL, 'admin', '2022-08-14 22:57:33', 0, '超级管理员');
-INSERT INTO `sys_role` VALUES (2, '基本角色', 'USER', '', NULL, 'admin', '2022-08-14 23:02:39', 0, '基本角色');
+INSERT INTO `sys_role` VALUES (1, '管理员', 'ADMIN', 'admin', '2022-08-14 22:57:33', 'admin', '2022-08-14 22:57:33', 0, '管理员');
+INSERT INTO `sys_role` VALUES (2, '基本角色', 'USER', 'admin', '2022-08-14 23:02:39', 'admin', '2022-08-14 23:02:39', 0, '基本角色');
 
 -- ----------------------------
 -- Records of sys_role_menu
@@ -96,19 +95,18 @@ INSERT INTO `sys_role_menu` VALUES (2, 3051);
 -- Records of sys_user
 -- ----------------------------
 INSERT INTO `sys_user` VALUES (1, 26, '管理员', 'admin', '$2a$10$u3Re8vB2J3pPAw8RYdpSA.5z/RR/oCg/2/WcSzEe.JZ0DJIz.VacO', 'Y', '616505453@qq.com', '17515087128', '1', NULL, '', NULL, 'admin', '2022-09-05 07:51:57', 0, '超级管理员');
-INSERT INTO `sys_user` VALUES (24, 25, '李四', 'test', '$2a$10$6ppgQN77P8WufCdWftbJGO4D8qRMcoPruIAga2yvm0./K4oBh1Q1C', 'Y', '616505453@qq.com', '17515087128', '1', NULL, 'admin', '2021-03-30 20:25:07', 'admin', '2021-12-09 23:14:09', 0, '测试账号');
+INSERT INTO `sys_user` VALUES (24, 25, '测试', 'test', '$2a$10$6ppgQN77P8WufCdWftbJGO4D8qRMcoPruIAga2yvm0./K4oBh1Q1C', 'Y', '616505453@qq.com', '17515087128', '1', NULL, 'admin', '2021-03-30 20:25:07', 'admin', '2021-12-09 23:14:09', 0, '测试账号');
 
 -- ----------------------------
 -- Records of sys_user_role
 -- ----------------------------
-INSERT INTO `sys_user_role` VALUES (1, 1);
 INSERT INTO `sys_user_role` VALUES (24, 2);
 
 -- ----------------------------
 -- Records of sys_dept
 -- ----------------------------
-INSERT INTO `sys_dept` VALUES (25, '济南微本地', 1, '杨先生', '17515087128', '616505453@qq.com', 0, 'Y', 'admin', '2022-09-11 00:21:08', 'admin', '2022-09-11 11:02:41', 0, '');
-INSERT INTO `sys_dept` VALUES (26, '研发部门', 1, '杨先生', '17515087128', '616505453@qq.com', 25, 'Y', 'admin', '2022-09-11 00:21:25', 'admin', '2022-09-11 11:02:37', 0, '');
+INSERT INTO `sys_dept` VALUES (25, '总部', 1, '杨先生', '17515087128', '616505453@qq.com', 0, 'Y', 'admin', '2022-09-11 00:21:08', 'admin', '2022-09-11 11:02:41', 0, '');
+INSERT INTO `sys_dept` VALUES (26, '研发部', 1, '杨先生', '17515087128', '616505453@qq.com', 25, 'Y', 'admin', '2022-09-11 00:21:25', 'admin', '2022-09-11 11:02:37', 0, '');
 
 -- ----------------------------
 -- Records of sys_post
@@ -119,6 +117,5 @@ INSERT INTO `sys_post` VALUES (2, '200', '销售岗', 2, 'Y', 'admin', '2022-09-
 -- ----------------------------
 -- Records of sys_user_post
 -- ----------------------------
-INSERT INTO `sys_user_post` VALUES (1, 2);
 INSERT INTO `sys_user_post` VALUES (24, 1);
 INSERT INTO `sys_user_post` VALUES (24, 2);

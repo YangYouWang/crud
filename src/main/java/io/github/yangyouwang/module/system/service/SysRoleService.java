@@ -93,7 +93,7 @@ public class SysRoleService extends ServiceImpl<SysRoleMapper,SysRole> {
      * @param ids 主键数组
      */
     public void removes(List<Long> ids) {
-        if (removeByIds(ids)) {
+        if (this.removeByIds(ids)) {
             sysRoleMenuService.removeSysRoleMenuByRoleId(ids.toArray(new Long[0]));
             sysUserRoleService.removeSysUserRoleByRoleId(ids.toArray(new Long[0]));
         }

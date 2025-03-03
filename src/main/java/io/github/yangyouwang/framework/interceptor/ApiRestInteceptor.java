@@ -4,7 +4,7 @@ import io.github.yangyouwang.common.annotation.PassToken;
 import io.github.yangyouwang.common.constant.JwtConsts;
 import io.github.yangyouwang.common.domain.ApiContext;
 import io.github.yangyouwang.common.enums.ResultStatus;
-import io.github.yangyouwang.framework.web.exception.CrudException;
+import io.github.yangyouwang.framework.web.exception.BusinessException;
 import io.github.yangyouwang.framework.security.util.JwtTokenUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
@@ -52,7 +52,7 @@ public class ApiRestInteceptor extends HandlerInterceptorAdapter {
                 }
             }
         }
-        throw new CrudException(ResultStatus.NO_PERMISSION);
+        throw new BusinessException(ResultStatus.NO_PERMISSION);
     }
 
     @Override

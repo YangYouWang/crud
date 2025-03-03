@@ -72,8 +72,7 @@ public class SysDictTypeService extends ServiceImpl<SysDictTypeMapper, SysDictTy
      */
     @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED,rollbackFor = Throwable.class)
     public void remove(Long id) {
-        boolean flag = this.removeById(id);
-        if (flag) {
+        if (this.removeById(id)) {
             sysDictValueMapper.delete(new LambdaQueryWrapper<SysDictValue>()
                     .eq(SysDictValue::getDictTypeId,id));
         }

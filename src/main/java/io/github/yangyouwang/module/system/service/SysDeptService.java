@@ -5,7 +5,7 @@ import io.github.yangyouwang.common.constant.ConfigConsts;
 import io.github.yangyouwang.common.domain.TreeSelectNode;
 import io.github.yangyouwang.framework.util.converter.ListToTree;
 import io.github.yangyouwang.framework.util.converter.impl.ListToTreeImpl;
-import io.github.yangyouwang.framework.web.exception.CrudException;
+import io.github.yangyouwang.framework.web.exception.BusinessException;
 import io.github.yangyouwang.module.system.entity.SysDept;
 import io.github.yangyouwang.module.system.mapper.SysDeptMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -63,7 +63,7 @@ public class SysDeptService extends ServiceImpl<SysDeptMapper, SysDept> {
     int count = this.count(new LambdaQueryWrapper<SysDept>()
             .eq(SysDept::getParentId, id));
     if (count != 0) {
-      throw new CrudException("存在部门,删除失败!");
+      throw new BusinessException("存在部门,删除失败!");
     }
     removeById(id);
   }
