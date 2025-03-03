@@ -12,14 +12,11 @@ import io.github.yangyouwang.framework.util.StringUtil;
 import io.github.yangyouwang.module.system.entity.*;
 import io.github.yangyouwang.module.system.mapper.SysMenuMapper;
 import io.github.yangyouwang.module.system.mapper.SysUserMapper;
-import io.github.yangyouwang.module.system.mapper.SysUserPostMapper;
-import io.github.yangyouwang.module.system.mapper.SysUserRoleMapper;
 import io.github.yangyouwang.module.system.model.dto.ModifyPassDTO;
 import io.github.yangyouwang.module.system.model.dto.ResetPassDTO;
 import io.github.yangyouwang.module.system.model.dto.UserParamDTO;
 import io.github.yangyouwang.module.system.model.vo.SysUserVO;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.BeanUtils;
 import org.springframework.lang.NonNull;
 import org.springframework.security.access.AccessDeniedException;
@@ -62,10 +59,10 @@ public class SysUserService extends ServiceImpl<SysUserMapper, SysUser> implemen
     private SysMenuMapper sysMenuMapper;
 
     @Resource
-    private SysUserRoleMapper sysUserRoleMapper;
+    private SysUserRoleService sysUserRoleService;
 
     @Resource
-    private SysUserPostMapper sysUserPostMapper;
+    private SysUserPostService sysUserPostService;
 
     @Resource
     private BCryptPasswordEncoder passwordEncoder;
@@ -124,11 +121,9 @@ public class SysUserService extends ServiceImpl<SysUserMapper, SysUser> implemen
         Assert.isNull(old,"用户已存在");
         String passWord = passwordEncoder.encode(ConfigConsts.DEFAULT_PASSWORD);
         sysUser.setPassWord(passWord);
-        boolean flag = this.save(sysUser);
-        if (flag) {
-            SysUserService proxy = (SysUserService) AopContext.currentProxy();
-            proxy.insertUserRoleBatch(sysUser.getId(), StringUtil.getId(sysUser.getRoleIds()));
-            proxy.insertUserPostBatch(sysUser.getId(), StringUtil.getId(sysUser.getPostIds()));
+        if (this.save(sysUser)) {
+            sysUserRoleService.insertSysUserRoleBatchByRoleIds(sysUser.getId(), sysUser.getRoleIds());
+            sysUserPostService.insertSysUserPostBatchByPostIds(sysUser.getId(), sysUser.getPostIds());
         }
         return String.format("初始化密码为：%s",ConfigConsts.DEFAULT_PASSWORD);
     }
@@ -139,51 +134,11 @@ public class SysUserService extends ServiceImpl<SysUserMapper, SysUser> implemen
      */
     @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED,rollbackFor = Throwable.class)
     public void edit(SysUser sysUser) {
-        boolean flag = this.updateById(sysUser);
-        if (flag) {
-            SysUserService proxy = (SysUserService) AopContext.currentProxy();
-            // 删除用户关联角色
-            sysUserRoleMapper.delete(new LambdaQueryWrapper<SysUserRole>().eq(SysUserRole::getUserId, sysUser.getId()));
-            proxy.insertUserRoleBatch(sysUser.getId(), StringUtil.getId(sysUser.getRoleIds()));
-            // 删除用户关联岗位
-            sysUserPostMapper.delete(new LambdaQueryWrapper<SysUserPost>().eq(SysUserPost::getUserId, sysUser.getId()));
-            proxy.insertUserPostBatch(sysUser.getId(), StringUtil.getId(sysUser.getPostIds()));
-        }
-    }
-
-    /**
-     * 批量新增修改用户关联角色
-     * @param userId 用户id
-     * @param roleIds 角色id
-     */
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Throwable.class)
-    public void insertUserRoleBatch(Long userId, Long[] roleIds) {
-        if (roleIds != null && roleIds.length > 0) {
-            List<SysUserRole> userRoles = Arrays.stream(roleIds).map(s -> {
-                SysUserRole userRole = new SysUserRole();
-                userRole.setUserId(userId);
-                userRole.setRoleId(s);
-                return userRole;
-            }).collect(Collectors.toList());
-            sysUserRoleMapper.insertBatchSomeColumn(userRoles);
-        }
-    }
-
-    /**
-     * 批量新增修改用户关联岗位
-     * @param userId 用户id
-     * @param postIds 岗位id
-     */
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Throwable.class)
-    public void insertUserPostBatch(Long userId, Long[] postIds) {
-        if (postIds != null && postIds.length > 0) {
-            List<SysUserPost> userPosts = Arrays.stream(postIds).map(s -> {
-                SysUserPost userPost = new SysUserPost();
-                userPost.setUserId(userId);
-                userPost.setPostId(s);
-                return userPost;
-            }).collect(Collectors.toList());
-            sysUserPostMapper.insertBatchSomeColumn(userPosts);
+        if (this.updateById(sysUser)) {
+            sysUserRoleService.removeSysUserRoleByUserId(sysUser.getId());
+            sysUserPostService.removeSysUserPostByUserId(sysUser.getId());
+            sysUserRoleService.insertSysUserRoleBatchByRoleIds(sysUser.getId(), sysUser.getRoleIds());
+            sysUserPostService.insertSysUserPostBatchByPostIds(sysUser.getId(), sysUser.getPostIds());
         }
     }
 
@@ -192,13 +147,25 @@ public class SysUserService extends ServiceImpl<SysUserMapper, SysUser> implemen
      * @param id 用户id
      */
     @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED,rollbackFor = Throwable.class)
-    public void del(Long id) {
-        boolean flag = this.removeById(id);
-        if (flag) {
-            sysUserRoleMapper.delete(new LambdaQueryWrapper<SysUserRole>().eq(SysUserRole::getUserId,id));
-            sysUserPostMapper.delete(new LambdaQueryWrapper<SysUserPost>().eq(SysUserPost::getUserId,id));
+    public void remove(Long id) {
+        if (this.removeById(id)) {
+            sysUserRoleService.removeSysUserRoleByUserId(id);
+            sysUserPostService.removeSysUserPostByUserId(id);
         }
     }
+
+    /**
+     * 删除请求
+     * @param id 用户id
+     */
+    @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED,rollbackFor = Throwable.class)
+    public void removes(List<Long>  id) {
+        if (this.removeByIds(id)) {
+            sysUserRoleService.removeSysUserRoleByUserId(id.toArray(new Long[0]));
+            sysUserPostService.removeSysUserPostByUserId(id.toArray(new Long[0]));
+        }
+    }
+
     /**
      * 导出用户信息
      */

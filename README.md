@@ -6,10 +6,10 @@
     2.产品定位: 简约后台管理系统
     3.项目特点：此项目代码清晰、界面简洁、springboot + layuiadmin 构建的单体后台管理系统。
 
-## 在线体验
-- 平台演示地址：[预览](http://www.wbd.plus/) 
-- 账号：admin
-- 密码：123456  
+## 联系我们
+- 官方网站：[www.weibendi.cn](https://www.weibendi.cn/) 
+- 联系人：杨先生
+- 手机号：17515087128
 
 ## 软件架构
 - 核心框架：Spring Boot

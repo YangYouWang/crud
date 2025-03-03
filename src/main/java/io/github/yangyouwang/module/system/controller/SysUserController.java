@@ -213,7 +213,7 @@ public class SysUserController extends CrudController {
     @ResponseBody
     @CrudLog(title = "删除用户",businessType = BusinessType.DELETE)
     public Result remove(@Valid @NotNull(message = "id不能为空") @PathVariable Long id) {
-        sysUserService.removeById(id);
+        sysUserService.remove(id);
         return Result.success();
     }
 
@@ -223,7 +223,7 @@ public class SysUserController extends CrudController {
     @ResponseBody
     @CrudLog(title = "删除用户",businessType = BusinessType.DELETE)
     public Result removes(@RequestBody @Valid List<Long> ids) {
-        sysUserService.removeByIds(ids);
+        sysUserService.removes(ids);
         return Result.success();
     }
 
