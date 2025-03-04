@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.yangyouwang.common.constant.ConfigConsts;
 import io.github.yangyouwang.common.domain.XmSelectNode;
+import io.github.yangyouwang.framework.util.excel.CustomRowWriteHandler;
+import io.github.yangyouwang.framework.util.excel.CustomSheetWriteHandler;
 import io.github.yangyouwang.framework.util.excel.EasyExcelUtil;
 import io.github.yangyouwang.framework.util.StringUtil;
 import io.github.yangyouwang.module.system.entity.*;
@@ -184,7 +186,8 @@ public class SysUserService extends ServiceImpl<SysUserMapper, SysUser> implemen
                     //给定工作表名称
                     .sheet(fileName)
                     //给定样式
-                    .registerWriteHandler(EasyExcelUtil.getStyleStrategy())
+                    .registerWriteHandler(new CustomSheetWriteHandler())
+                    .registerWriteHandler(new CustomRowWriteHandler())
                     //给定导出数据
                     .doWrite(datas);
         } catch (Exception e) {
