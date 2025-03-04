@@ -7,7 +7,7 @@ import io.github.yangyouwang.common.domain.Result;
 import io.github.yangyouwang.common.domain.TableDataInfo;
 import io.github.yangyouwang.common.domain.XmSelectNode;
 import io.github.yangyouwang.common.enums.BusinessType;
-import io.github.yangyouwang.framework.util.SecurityUtils;
+import io.github.yangyouwang.framework.security.util.SecurityUtils;
 import io.github.yangyouwang.module.system.entity.SysUser;
 import io.github.yangyouwang.module.system.model.dto.ModifyPassDTO;
 import io.github.yangyouwang.module.system.model.dto.ResetPassDTO;

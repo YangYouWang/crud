@@ -1,6 +1,6 @@
 package io.github.yangyouwang.framework.config;
 
-import io.github.yangyouwang.framework.interceptor.ApiRestInteceptor;
+import io.github.yangyouwang.framework.security.interceptor.ApiRestInteceptor;
 import io.github.yangyouwang.framework.web.version.CustomRequestMappingHandlerMapping;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcRegistrations;
 import org.springframework.boot.web.client.RestTemplateBuilder;

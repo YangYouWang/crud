@@ -1,4 +1,4 @@
-package io.github.yangyouwang.framework.interceptor;
+package io.github.yangyouwang.framework.security.interceptor;
 
 import io.github.yangyouwang.common.annotation.PassToken;
 import io.github.yangyouwang.common.constant.JwtConsts;

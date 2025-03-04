@@ -1,4 +1,4 @@
-package io.github.yangyouwang.framework.util;
+package io.github.yangyouwang.framework.security.util;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.context.SecurityContextHolder;

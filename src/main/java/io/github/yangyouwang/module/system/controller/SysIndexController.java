@@ -3,7 +3,7 @@ package io.github.yangyouwang.module.system.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.github.yangyouwang.common.base.CrudController;
 import io.github.yangyouwang.common.constant.ConfigConsts;
-import io.github.yangyouwang.framework.util.SecurityUtils;
+import io.github.yangyouwang.framework.security.util.SecurityUtils;
 import io.github.yangyouwang.framework.util.StringUtil;
 import io.github.yangyouwang.module.system.entity.SysUser;
 import io.github.yangyouwang.module.system.model.vo.SysMenuVO;
