@@ -3,6 +3,8 @@ package io.github.yangyouwang.module.system.service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.yangyouwang.framework.util.StringUtil;
+import io.github.yangyouwang.module.system.entity.SysRole;
+import io.github.yangyouwang.module.system.entity.SysUser;
 import io.github.yangyouwang.module.system.entity.SysUserRole;
 import io.github.yangyouwang.module.system.mapper.SysUserRoleMapper;
 import org.springframework.stereotype.Service;
@@ -33,16 +35,15 @@ public class SysUserRoleService extends ServiceImpl<SysUserRoleMapper, SysUserRo
 
     /**
      * 批量新增用户关联角色
-     * @param roleId 角色id
-     * @param userIdStr 用户id
+     * @param sysRole 角色
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Throwable.class)
-    public void insertSysUserRoleBatchByUserIds(Long roleId, String userIdStr) {
-        Long[] userIds = StringUtil.getId(userIdStr);
+    public void insertSysUserRole(SysRole sysRole) {
+        Long[] userIds = StringUtil.getId(sysRole.getUserIds());
         if (userIds != null && userIds.length > 0) {
             List<SysUserRole> userRoles = Arrays.stream(userIds).map(s -> {
                 SysUserRole userRole = new SysUserRole();
-                userRole.setRoleId(roleId);
+                userRole.setRoleId(sysRole.getId());
                 userRole.setUserId(s);
                 return userRole;
             }).collect(Collectors.toList());
@@ -59,16 +60,15 @@ public class SysUserRoleService extends ServiceImpl<SysUserRoleMapper, SysUserRo
 
     /**
      * 批量新增修改用户关联角色
-     * @param userId 用户id
-     * @param roleIdStr 角色id
+     * @param sysUser 用户
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Throwable.class)
-    public void insertSysUserRoleBatchByRoleIds(Long userId, String roleIdStr) {
-        Long[] roleIds = StringUtil.getId(roleIdStr);
+    public void insertSysUserRole(SysUser sysUser) {
+        Long[] roleIds = StringUtil.getId(sysUser.getRoleIds());
         if (roleIds != null && roleIds.length > 0) {
             List<SysUserRole> userRoles = Arrays.stream(roleIds).map(s -> {
                 SysUserRole userRole = new SysUserRole();
-                userRole.setUserId(userId);
+                userRole.setUserId(sysUser.getId());
                 userRole.setRoleId(s);
                 return userRole;
             }).collect(Collectors.toList());

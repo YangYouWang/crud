@@ -3,6 +3,7 @@ package io.github.yangyouwang.module.system.service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.yangyouwang.framework.util.StringUtil;
+import io.github.yangyouwang.module.system.entity.SysRole;
 import io.github.yangyouwang.module.system.entity.SysRoleMenu;
 import io.github.yangyouwang.module.system.mapper.SysRoleMenuMapper;
 import org.springframework.stereotype.Service;
@@ -33,16 +34,15 @@ public class SysRoleMenuService extends ServiceImpl<SysRoleMenuMapper, SysRoleMe
 
     /**
      * 批量新增角色关联菜单
-     * @param roleId 角色id
-     * @param menuIdStr 菜单id
+     * @param sysRole 角色
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Throwable.class)
-    public void insertSysRoleMenuBatch(Long roleId, String menuIdStr) {
-        Long[] menuIds = StringUtil.getId(menuIdStr);
+    public void insertSysRoleMenu(SysRole sysRole) {
+        Long[] menuIds = StringUtil.getId(sysRole.getMenuIds());
         if (menuIds != null && menuIds.length > 0) {
             List<SysRoleMenu> roleMenus = Arrays.stream(menuIds).map(s -> {
                 SysRoleMenu roleMenu = new SysRoleMenu();
-                roleMenu.setRoleId(roleId);
+                roleMenu.setRoleId(sysRole.getId());
                 roleMenu.setMenuId(s);
                 return roleMenu;
             }).collect(Collectors.toList());

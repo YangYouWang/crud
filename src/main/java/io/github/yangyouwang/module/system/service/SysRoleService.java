@@ -58,8 +58,8 @@ public class SysRoleService extends ServiceImpl<SysRoleMapper,SysRole> {
         SysRole sysRoleOld = this.getOne(new LambdaQueryWrapper<SysRole>().eq(SysRole::getRoleKey,sysRole.getRoleKey()));
         Assert.isNull(sysRoleOld, "角色已存在");
         if (this.save(sysRole)) {
-            sysRoleMenuService.insertSysRoleMenuBatch(sysRole.getId(), sysRole.getMenuIds());
-            sysUserRoleService.insertSysUserRoleBatchByUserIds(sysRole.getId(), sysRole.getUserIds());
+            sysRoleMenuService.insertSysRoleMenu(sysRole);
+            sysUserRoleService.insertSysUserRole(sysRole);
         }
     }
 
@@ -72,8 +72,8 @@ public class SysRoleService extends ServiceImpl<SysRoleMapper,SysRole> {
         if (this.updateById(sysRole)) {
             sysRoleMenuService.removeSysRoleMenuByRoleId(sysRole.getId());
             sysUserRoleService.removeSysUserRoleByRoleId(sysRole.getId());
-            sysRoleMenuService.insertSysRoleMenuBatch(sysRole.getId(), sysRole.getMenuIds());
-            sysUserRoleService.insertSysUserRoleBatchByUserIds(sysRole.getId(), sysRole.getUserIds());
+            sysRoleMenuService.insertSysRoleMenu(sysRole);
+            sysUserRoleService.insertSysUserRole(sysRole);
         }
     }
 

@@ -111,8 +111,8 @@ public class SysUserService extends ServiceImpl<SysUserMapper, SysUser> implemen
         String passWord = passwordEncoder.encode(ConfigConsts.DEFAULT_PASSWORD);
         sysUser.setPassWord(passWord);
         if (this.save(sysUser)) {
-            sysUserRoleService.insertSysUserRoleBatchByRoleIds(sysUser.getId(), sysUser.getRoleIds());
-            sysUserPostService.insertSysUserPostBatchByPostIds(sysUser.getId(), sysUser.getPostIds());
+            sysUserRoleService.insertSysUserRole(sysUser);
+            sysUserPostService.insertSysUserPost(sysUser);
         }
         return String.format("初始化密码为：%s",ConfigConsts.DEFAULT_PASSWORD);
     }
@@ -126,8 +126,8 @@ public class SysUserService extends ServiceImpl<SysUserMapper, SysUser> implemen
         if (this.updateById(sysUser)) {
             sysUserRoleService.removeSysUserRoleByUserId(sysUser.getId());
             sysUserPostService.removeSysUserPostByUserId(sysUser.getId());
-            sysUserRoleService.insertSysUserRoleBatchByRoleIds(sysUser.getId(), sysUser.getRoleIds());
-            sysUserPostService.insertSysUserPostBatchByPostIds(sysUser.getId(), sysUser.getPostIds());
+            sysUserRoleService.insertSysUserRole(sysUser);
+            sysUserPostService.insertSysUserPost(sysUser);
         }
     }
 

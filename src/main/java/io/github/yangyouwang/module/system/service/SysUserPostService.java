@@ -3,6 +3,7 @@ package io.github.yangyouwang.module.system.service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.yangyouwang.framework.util.StringUtil;
+import io.github.yangyouwang.module.system.entity.SysUser;
 import io.github.yangyouwang.module.system.entity.SysUserPost;
 import io.github.yangyouwang.module.system.mapper.SysUserPostMapper;
 import org.springframework.stereotype.Service;
@@ -32,16 +33,15 @@ public class SysUserPostService extends ServiceImpl<SysUserPostMapper, SysUserPo
 
     /**
      * 批量新增修改用户关联岗位
-     * @param userId 用户id
-     * @param postIdStr 岗位id
+     * @param sysUser 用户
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Throwable.class)
-    public void insertSysUserPostBatchByPostIds(Long userId, String postIdStr) {
-        Long[] postIds = StringUtil.getId(postIdStr);
+    public void insertSysUserPost(SysUser sysUser) {
+        Long[] postIds = StringUtil.getId(sysUser.getPostIds());
         if (postIds != null && postIds.length > 0) {
             List<SysUserPost> userPosts = Arrays.stream(postIds).map(s -> {
                 SysUserPost userPost = new SysUserPost();
-                userPost.setUserId(userId);
+                userPost.setUserId(sysUser.getId());
                 userPost.setPostId(s);
                 return userPost;
             }).collect(Collectors.toList());
