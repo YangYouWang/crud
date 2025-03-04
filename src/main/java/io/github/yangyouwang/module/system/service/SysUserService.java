@@ -18,6 +18,7 @@ import io.github.yangyouwang.module.system.model.vo.SysUserVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.lang.NonNull;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -85,9 +86,12 @@ public class SysUserService extends ServiceImpl<SysUserMapper, SysUser> implemen
             throw new UsernameNotFoundException("用户不存在");
         }
         // 获取菜单权限
-        List<String> menuRole = sysMenuService.getMenuPerms(userName, user.getRoleIds());
+        List<String> menuPerms = sysMenuService.getMenuPerms(userName, user.getRoleIds());
+        if (menuPerms.isEmpty()) {
+            throw new AccessDeniedException("暂未分配菜单");
+        }
         return new User(user.getUserName(), user.getPassWord(), ConfigConsts.SYS_YES.equals(user.getEnabled()),
-                true, true, true, AuthorityUtils.commaSeparatedStringToAuthorityList(String.join(",",menuRole)));
+                true, true, true, AuthorityUtils.commaSeparatedStringToAuthorityList(String.join(",",menuPerms)));
     }
 
     /**

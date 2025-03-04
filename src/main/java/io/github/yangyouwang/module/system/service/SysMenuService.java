@@ -60,9 +60,6 @@ public class SysMenuService extends ServiceImpl<SysMenuMapper, SysMenu> {
         } else {
             menus = sysMenuMapper.findMenuByUserId(userId);
         }
-        if (menus.isEmpty()) {
-            throw new AccessDeniedException("暂未分配菜单");
-        }
         List<SysMenuVO> sysMenuVOList = menus.stream().map(sysMenu -> {
             SysMenuVO sysMenuVO = new SysMenuVO();
             BeanUtil.copyProperties(sysMenu, sysMenuVO, true, CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true));
