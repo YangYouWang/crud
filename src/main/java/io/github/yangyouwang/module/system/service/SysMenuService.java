@@ -13,6 +13,7 @@ import io.github.yangyouwang.framework.util.StringUtil;
 import io.github.yangyouwang.module.system.mapper.SysMenuMapper;
 import io.github.yangyouwang.module.system.entity.SysMenu;
 import io.github.yangyouwang.module.system.model.vo.SysMenuVO;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -143,5 +144,21 @@ public class SysMenuService extends ServiceImpl<SysMenuMapper, SysMenu> {
      */
     public SysMenu info(Long id) {
         return sysMenuMapper.info(id);
+    }
+
+    /**
+     * 获取菜单权限
+     * @return
+     */
+    public List<String> getMenuPerms(String userName, String roleIds) {
+        if (ConfigConsts.ADMIN_USER.equals(userName)) {
+            return sysMenuMapper.findMenuPerms();
+        } else {
+            if (StringUtils.isBlank(roleIds)) {
+                throw new AccessDeniedException("暂未分配菜单");
+            }
+            Long[] ids = StringUtil.getId(roleIds);
+            return sysMenuMapper.findMenuPermsByRoleIds(ids);
+        }
     }
 }

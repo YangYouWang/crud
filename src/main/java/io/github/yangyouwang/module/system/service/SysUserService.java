@@ -10,7 +10,6 @@ import io.github.yangyouwang.common.domain.XmSelectNode;
 import io.github.yangyouwang.framework.util.excel.EasyExcelUtil;
 import io.github.yangyouwang.framework.util.StringUtil;
 import io.github.yangyouwang.module.system.entity.*;
-import io.github.yangyouwang.module.system.mapper.SysMenuMapper;
 import io.github.yangyouwang.module.system.mapper.SysUserMapper;
 import io.github.yangyouwang.module.system.model.dto.ModifyPassDTO;
 import io.github.yangyouwang.module.system.model.dto.ResetPassDTO;
@@ -19,7 +18,6 @@ import io.github.yangyouwang.module.system.model.vo.SysUserVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.lang.NonNull;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -56,7 +54,7 @@ public class SysUserService extends ServiceImpl<SysUserMapper, SysUser> implemen
     private SysUserMapper sysUserMapper;
 
     @Resource
-    private SysMenuMapper sysMenuMapper;
+    private SysMenuService sysMenuService;
 
     @Resource
     private SysUserRoleService sysUserRoleService;
@@ -86,17 +84,8 @@ public class SysUserService extends ServiceImpl<SysUserMapper, SysUser> implemen
         if (ObjectUtil.isNull(user)) {
             throw new UsernameNotFoundException("用户不存在");
         }
-        List<String> menuRole;
-        if (ConfigConsts.ADMIN_USER.equals(userName)) {
-            menuRole = sysMenuMapper.findMenuRole();
-        } else {
-            String roleIds = user.getRoleIds();
-            if (StringUtils.isBlank(roleIds)) {
-                throw new AccessDeniedException("暂未分配菜单");
-            }
-            Long[] ids = StringUtil.getId(roleIds);
-            menuRole = sysMenuMapper.findMenuRoleByRoleIds(ids);
-        }
+        // 获取菜单权限
+        List<String> menuRole = sysMenuService.getMenuPerms(userName, user.getRoleIds());
         return new User(user.getUserName(), user.getPassWord(), ConfigConsts.SYS_YES.equals(user.getEnabled()),
                 true, true, true, AuthorityUtils.commaSeparatedStringToAuthorityList(String.join(",",menuRole)));
     }

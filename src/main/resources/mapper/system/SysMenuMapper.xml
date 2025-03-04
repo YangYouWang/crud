@@ -39,7 +39,7 @@
     order by m.parent_id, m.order_num
   </select>
   <!-- 根据角色查询菜单权限 -->
-  <select id="findMenuRoleByRoleIds" resultType="java.lang.String">
+  <select id="findMenuPermsByRoleIds" resultType="java.lang.String">
     select m.perms
     from sys_menu m
     left join sys_role_menu rm on m.id = rm.menu_id
@@ -52,10 +52,9 @@
       </foreach>
   </select>
   <!-- 查询所有菜单权限 -->
-  <select id="findMenuRole" resultType="java.lang.String">
+  <select id="findMenuPerms" resultType="java.lang.String">
     select perms from sys_menu where deleted = 0 and visible = 'Y' and perms &lt;&gt; ''
   </select>
-
   <select id="info" resultMap="BaseResultMap">
     select sm.id, sm.menu_name, sm.parent_id, sm.order_num, sm.icon, sm.url, sm.menu_type, sm.visible,
            sm.perms, sm.create_by, sm.create_time,sm.update_by, sm.update_time, sm.remark, child.menu_name as parent_name
