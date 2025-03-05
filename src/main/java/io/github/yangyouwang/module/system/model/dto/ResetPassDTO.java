@@ -1,6 +1,7 @@
 package io.github.yangyouwang.module.system.model.dto;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -20,6 +21,7 @@ public class ResetPassDTO {
     /**
      * 主键id
      */
+    @ApiModelProperty(value = "主键")
     @NotNull(message = "id不能为空")
     private Long id;
 }

@@ -1,6 +1,7 @@
 package io.github.yangyouwang.module.system.model.dto;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.List;
@@ -19,13 +20,16 @@ public class UserParamDTO {
     /**
      * 昵称
      */
+    @ApiModelProperty(value = "昵称")
     private String nickName;
     /**
      * 手机号码
      */
+    @ApiModelProperty(value = "手机号码")
     private String phonenumber;
     /**
      * 部门ids
      */
+    @ApiModelProperty(value = "部门数组")
     private List deptIds;
 }
