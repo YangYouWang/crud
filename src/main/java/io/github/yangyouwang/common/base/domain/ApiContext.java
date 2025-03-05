@@ -1,4 +1,4 @@
-package io.github.yangyouwang.common.domain;
+package io.github.yangyouwang.common.base.domain;
 
 /**
  * 获取userId上下文环境

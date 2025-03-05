@@ -1,12 +1,12 @@
 package io.github.yangyouwang.module.system.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.common.constant.ConfigConsts;
-import io.github.yangyouwang.common.domain.XmSelectNode;
+import io.github.yangyouwang.common.base.domain.XmSelectNode;
 import io.github.yangyouwang.framework.util.StringUtil;
 import io.github.yangyouwang.module.system.entity.SysPost;
 import io.github.yangyouwang.module.system.mapper.SysPostMapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
@@ -28,7 +28,7 @@ import static java.util.Optional.ofNullable;
 * @since 2022-09-15
 */
 @Service
-public class SysPostService extends ServiceImpl<SysPostMapper, SysPost> {
+public class SysPostService extends BaseService<SysPostMapper, SysPost> {
 
   /**
   * 岗位表分页列表

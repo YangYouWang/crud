@@ -2,10 +2,10 @@ package io.github.yangyouwang.module.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.github.yangyouwang.common.annotation.CrudLog;
-import io.github.yangyouwang.common.base.CrudBaseController;
-import io.github.yangyouwang.common.domain.Result;
-import io.github.yangyouwang.common.domain.TableDataInfo;
-import io.github.yangyouwang.common.domain.XmSelectNode;
+import io.github.yangyouwang.common.base.controller.BaseController;
+import io.github.yangyouwang.common.base.domain.Result;
+import io.github.yangyouwang.common.base.domain.TableDataInfo;
+import io.github.yangyouwang.common.base.domain.XmSelectNode;
 import io.github.yangyouwang.common.enums.BusinessType;
 import io.github.yangyouwang.module.system.entity.SysRole;
 import io.github.yangyouwang.module.system.service.SysRoleService;
@@ -38,7 +38,7 @@ import java.util.Objects;
 @Controller
 @RequestMapping("/system/sysRole")
 @RequiredArgsConstructor
-public class SysRoleController extends CrudBaseController {
+public class SysRoleController extends BaseController {
 
     private static final String SUFFIX = "system/sysRole";
 

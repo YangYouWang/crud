@@ -1,10 +1,10 @@
 package io.github.yangyouwang.module.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import io.github.yangyouwang.common.domain.TreeSelectNode;
+import io.github.yangyouwang.common.base.domain.TreeSelectNode;
 import io.github.yangyouwang.module.system.entity.SysDept;
 import io.github.yangyouwang.module.system.service.SysDeptService;
-import io.github.yangyouwang.common.domain.Result;
+import io.github.yangyouwang.common.base.domain.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -17,7 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.ui.ModelMap;
 import org.springframework.stereotype.Controller;
-import io.github.yangyouwang.common.base.CrudBaseController;
+import io.github.yangyouwang.common.base.controller.BaseController;
 
 import javax.validation.Valid;
 import java.util.Objects;
@@ -33,7 +33,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/system/sysDept")
 @RequiredArgsConstructor
-public class SysDeptController extends CrudBaseController {
+public class SysDeptController extends BaseController {
 
   private static final String SUFFIX = "system/sysDept";
 

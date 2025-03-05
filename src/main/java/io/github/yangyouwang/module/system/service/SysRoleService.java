@@ -1,8 +1,8 @@
 package io.github.yangyouwang.module.system.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.github.yangyouwang.common.domain.XmSelectNode;
+import io.github.yangyouwang.common.base.domain.XmSelectNode;
+import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.framework.util.StringUtil;
 import io.github.yangyouwang.module.system.mapper.SysRoleMapper;
 import io.github.yangyouwang.module.system.entity.SysRole;
@@ -28,7 +28,7 @@ import static java.util.Optional.*;
  * @date 2021/3/269:44 PM
  */
 @Service
-public class SysRoleService extends ServiceImpl<SysRoleMapper,SysRole> {
+public class SysRoleService extends BaseService<SysRoleMapper,SysRole> {
 
     @Resource
     private SysRoleMapper sysRoleMapper;

@@ -2,7 +2,7 @@ package io.github.yangyouwang.framework.security.interceptor;
 
 import io.github.yangyouwang.common.annotation.PassToken;
 import io.github.yangyouwang.common.constant.JwtConsts;
-import io.github.yangyouwang.common.domain.ApiContext;
+import io.github.yangyouwang.common.base.domain.ApiContext;
 import io.github.yangyouwang.common.enums.ResultStatus;
 import io.github.yangyouwang.framework.web.exception.BusinessException;
 import io.github.yangyouwang.framework.security.util.JwtTokenUtil;

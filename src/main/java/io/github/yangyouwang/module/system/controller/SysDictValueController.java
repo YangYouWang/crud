@@ -1,8 +1,8 @@
 package io.github.yangyouwang.module.system.controller;
 
 import io.github.yangyouwang.common.annotation.CrudLog;
-import io.github.yangyouwang.common.base.CrudBaseController;
-import io.github.yangyouwang.common.domain.Result;
+import io.github.yangyouwang.common.base.controller.BaseController;
+import io.github.yangyouwang.common.base.domain.Result;
 import io.github.yangyouwang.common.enums.BusinessType;
 import io.github.yangyouwang.module.system.entity.SysDictValue;
 import io.github.yangyouwang.module.system.service.SysDictValueService;
@@ -30,7 +30,7 @@ import java.util.Objects;
 @Controller
 @RequestMapping("/system/sysDictValue")
 @RequiredArgsConstructor
-public class SysDictValueController extends CrudBaseController {
+public class SysDictValueController extends BaseController {
 
     private static final String SUFFIX = "system/sysDictValue";
 

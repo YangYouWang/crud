@@ -1,7 +1,7 @@
 package io.github.yangyouwang.module.qrtz.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.yangyouwang.common.domain.BaseEntity;
+import io.github.yangyouwang.common.base.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

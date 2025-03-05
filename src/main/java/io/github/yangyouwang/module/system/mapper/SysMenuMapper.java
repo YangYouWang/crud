@@ -1,6 +1,6 @@
 package io.github.yangyouwang.module.system.mapper;
 
-import io.github.yangyouwang.common.base.CrudBaseMapper;
+import io.github.yangyouwang.common.base.mapper.BaseMpMapper;
 import io.github.yangyouwang.module.system.entity.SysMenu;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
  * @description: 菜单Mapper
  * @date 2021/3/2112:25 AM
  */
-public interface SysMenuMapper extends CrudBaseMapper<SysMenu> {
+public interface SysMenuMapper extends BaseMpMapper<SysMenu> {
 
     /**
      * 根据菜单类型和状态查询菜单

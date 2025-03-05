@@ -1,6 +1,6 @@
 package io.github.yangyouwang.module.system.service;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.module.system.mapper.SysLogMapper;
 import io.github.yangyouwang.module.system.entity.SysLog;
 import org.springframework.stereotype.Service;
@@ -14,6 +14,6 @@ import org.springframework.stereotype.Service;
  * @date 2021/4/111:08 AM
  */
 @Service
-public class SysLogService extends ServiceImpl<SysLogMapper,SysLog> {
+public class SysLogService extends BaseService<SysLogMapper,SysLog> {
 
 }

@@ -1,14 +1,14 @@
 package io.github.yangyouwang.module.system.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.common.constant.ConfigConsts;
-import io.github.yangyouwang.common.domain.TreeSelectNode;
+import io.github.yangyouwang.common.base.domain.TreeSelectNode;
 import io.github.yangyouwang.framework.util.converter.ListToTree;
 import io.github.yangyouwang.framework.util.converter.impl.ListToTreeImpl;
 import io.github.yangyouwang.framework.web.exception.BusinessException;
 import io.github.yangyouwang.module.system.entity.SysDept;
 import io.github.yangyouwang.module.system.mapper.SysDeptMapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 * @since 2022-09-03
 */
 @Service
-public class SysDeptService extends ServiceImpl<SysDeptMapper, SysDept> {
+public class SysDeptService extends BaseService<SysDeptMapper, SysDept> {
 
   @Resource
   private SysDeptMapper sysDeptMapper;

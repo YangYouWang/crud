@@ -2,8 +2,9 @@ package io.github.yangyouwang.module.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.yangyouwang.common.domain.BaseEntity;
+import io.github.yangyouwang.common.base.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -20,19 +21,23 @@ public class SysRole extends BaseEntity {
     /**
      * 角色名称
      */
+    @ApiModelProperty(value = "角色名称")
     private String roleName;
     /**
      * 角色标识
      */
+    @ApiModelProperty(value = "角色标识")
     private String roleKey;
     /**
      * 菜单ID数组
      */
+    @ApiModelProperty(value = "菜单外键数组")
     @TableField(exist = false)
     private String menuIds;
     /**
      * 用户ID数组
      */
+    @ApiModelProperty(value = "用户外键数组")
     @TableField(exist = false)
     private String userIds;
 }

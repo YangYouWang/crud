@@ -1,7 +1,7 @@
 package io.github.yangyouwang.module.system.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.framework.util.StringUtil;
 import io.github.yangyouwang.module.system.entity.SysRole;
 import io.github.yangyouwang.module.system.entity.SysUser;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
  * 用户关联角色业务层
  */
 @Service
-public class SysUserRoleService extends ServiceImpl<SysUserRoleMapper, SysUserRole> {
+public class SysUserRoleService extends BaseService<SysUserRoleMapper, SysUserRole> {
 
 
     @Resource

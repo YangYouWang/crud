@@ -1,11 +1,11 @@
 package io.github.yangyouwang.module.system.controller;
 
 import io.github.yangyouwang.common.annotation.CrudLog;
-import io.github.yangyouwang.common.domain.Result;
+import io.github.yangyouwang.common.base.domain.Result;
 import io.github.yangyouwang.common.enums.BusinessType;
 import io.github.yangyouwang.module.system.entity.SysLoginLog;
 import io.github.yangyouwang.module.system.service.SysLoginLogService;
-import io.github.yangyouwang.common.domain.TableDataInfo;
+import io.github.yangyouwang.common.base.domain.TableDataInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-import io.github.yangyouwang.common.base.CrudBaseController;
+import io.github.yangyouwang.common.base.controller.BaseController;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -29,7 +29,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/system/sysLoginLog")
 @RequiredArgsConstructor
-public class SysLoginLogController extends CrudBaseController {
+public class SysLoginLogController extends BaseController {
 
   private static final String SUFFIX = "system/sysLoginLog";
 

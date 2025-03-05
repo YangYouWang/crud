@@ -1,13 +1,13 @@
 package io.github.yangyouwang.module.qrtz.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.common.constant.ConfigConsts;
 import io.github.yangyouwang.module.qrtz.util.job.QuartzManager;
 import io.github.yangyouwang.module.qrtz.entity.QrtzJob;
 import io.github.yangyouwang.module.qrtz.entity.QrtzJobLog;
 import io.github.yangyouwang.module.qrtz.mapper.JobLogMapper;
 import io.github.yangyouwang.module.qrtz.mapper.JobMapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.quartz.*;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ import java.util.List;
  * @since 2022-07-30
  */
 @Service
-public class JobService extends ServiceImpl<JobMapper, QrtzJob> {
+public class JobService extends BaseService<JobMapper, QrtzJob> {
 
   @Resource
   private QuartzManager quartzManager;

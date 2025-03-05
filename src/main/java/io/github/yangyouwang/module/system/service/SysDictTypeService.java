@@ -3,7 +3,7 @@ package io.github.yangyouwang.module.system.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.common.constant.ConfigConsts;
 import io.github.yangyouwang.module.system.mapper.SysDictTypeMapper;
 import io.github.yangyouwang.module.system.mapper.SysDictValueMapper;
@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
  * @date 2021/4/13下午1:11
  */
 @Service
-public class SysDictTypeService extends ServiceImpl<SysDictTypeMapper, SysDictType> {
+public class SysDictTypeService extends BaseService<SysDictTypeMapper, SysDictType> {
 
     @Resource
     private SysDictTypeMapper sysDictTypeMapper;

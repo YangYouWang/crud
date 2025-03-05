@@ -1,7 +1,7 @@
 package io.github.yangyouwang.module.system.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.framework.util.StringUtil;
 import io.github.yangyouwang.module.system.entity.SysUser;
 import io.github.yangyouwang.module.system.entity.SysUserPost;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * 用户关联岗位业务层
  */
 @Service
-public class SysUserPostService extends ServiceImpl<SysUserPostMapper, SysUserPost> {
+public class SysUserPostService extends BaseService<SysUserPostMapper, SysUserPost> {
 
     @Resource
     private SysUserPostMapper sysUserPostMapper;

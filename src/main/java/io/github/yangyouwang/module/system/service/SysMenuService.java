@@ -3,9 +3,9 @@ package io.github.yangyouwang.module.system.service;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.common.constant.ConfigConsts;
-import io.github.yangyouwang.common.domain.TreeSelectNode;
+import io.github.yangyouwang.common.base.domain.TreeSelectNode;
 import io.github.yangyouwang.framework.util.converter.ListToTree;
 import io.github.yangyouwang.framework.util.converter.impl.ListToTreeImpl;
 import io.github.yangyouwang.framework.web.exception.BusinessException;
@@ -38,7 +38,7 @@ import static java.util.Optional.ofNullable;
  * @date 2021/3/2312:32 PM
  */
 @Service
-public class SysMenuService extends ServiceImpl<SysMenuMapper, SysMenu> {
+public class SysMenuService extends BaseService<SysMenuMapper, SysMenu> {
 
     @Resource
     private SysMenuMapper sysMenuMapper;

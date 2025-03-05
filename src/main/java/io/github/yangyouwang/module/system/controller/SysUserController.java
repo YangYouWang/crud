@@ -2,10 +2,10 @@ package io.github.yangyouwang.module.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.github.yangyouwang.common.annotation.CrudLog;
-import io.github.yangyouwang.common.base.CrudBaseController;
-import io.github.yangyouwang.common.domain.Result;
-import io.github.yangyouwang.common.domain.TableDataInfo;
-import io.github.yangyouwang.common.domain.XmSelectNode;
+import io.github.yangyouwang.common.base.controller.BaseController;
+import io.github.yangyouwang.common.base.domain.Result;
+import io.github.yangyouwang.common.base.domain.TableDataInfo;
+import io.github.yangyouwang.common.base.domain.XmSelectNode;
 import io.github.yangyouwang.common.enums.BusinessType;
 import io.github.yangyouwang.framework.security.util.SecurityUtils;
 import io.github.yangyouwang.module.system.entity.SysUser;
@@ -44,7 +44,7 @@ import java.util.Objects;
 @Controller
 @RequestMapping("/system/sysUser")
 @RequiredArgsConstructor
-public class SysUserController extends CrudBaseController {
+public class SysUserController extends BaseController {
 
     private static final String SUFFIX = "system/sysUser";
 

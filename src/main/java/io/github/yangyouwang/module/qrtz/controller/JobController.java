@@ -1,11 +1,11 @@
 package io.github.yangyouwang.module.qrtz.controller;
 
 import io.github.yangyouwang.common.annotation.CrudLog;
-import io.github.yangyouwang.common.base.CrudBaseController;
-import io.github.yangyouwang.common.domain.TableDataInfo;
+import io.github.yangyouwang.common.base.controller.BaseController;
+import io.github.yangyouwang.common.base.domain.TableDataInfo;
 import io.github.yangyouwang.common.enums.BusinessType;
 import io.github.yangyouwang.module.qrtz.entity.QrtzJob;
-import io.github.yangyouwang.common.domain.Result;
+import io.github.yangyouwang.common.base.domain.Result;
 import io.github.yangyouwang.module.qrtz.service.JobService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -35,7 +35,7 @@ import java.util.Objects;
 @Controller
 @RequestMapping("/qrtz/job")
 @RequiredArgsConstructor
-public class JobController extends CrudBaseController {
+public class JobController extends BaseController {
 
   private static final String SUFFIX = "qrtz/job";
 

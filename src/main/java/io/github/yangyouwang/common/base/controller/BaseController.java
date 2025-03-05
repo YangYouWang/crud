@@ -1,8 +1,8 @@
-package io.github.yangyouwang.common.base;
+package io.github.yangyouwang.common.base.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import io.github.yangyouwang.common.domain.TableDataInfo;
+import io.github.yangyouwang.common.base.domain.TableDataInfo;
 import org.springframework.util.Assert;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -19,7 +19,7 @@ import java.util.Objects;
  * @version v1.0
  * @since JDK 1.8
  */
-public class CrudBaseController {
+public class BaseController {
 
     /**
      * 设置请求分页数据

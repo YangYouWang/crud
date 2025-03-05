@@ -2,7 +2,7 @@ package io.github.yangyouwang.module.system.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.toolkit.Constants;
-import io.github.yangyouwang.common.base.CrudBaseMapper;
+import io.github.yangyouwang.common.base.mapper.BaseMpMapper;
 import io.github.yangyouwang.module.system.entity.SysUser;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * @description: 用户Mapper
  * @date 2021/3/2112:25 AM
  */
-public interface SysUserMapper extends CrudBaseMapper<SysUser> {
+public interface SysUserMapper extends BaseMpMapper<SysUser> {
 
     /**
      * 根据用户名称查询用户信息

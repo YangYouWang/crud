@@ -1,8 +1,8 @@
 package io.github.yangyouwang.module.qrtz.service;
 
+import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.module.qrtz.entity.QrtzJobLog;
 import io.github.yangyouwang.module.qrtz.mapper.JobLogMapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
@@ -18,7 +18,7 @@ import java.util.List;
 * @since 2022-10-26
 */
 @Service
-public class JobLogService extends ServiceImpl<JobLogMapper, QrtzJobLog> {
+public class JobLogService extends BaseService<JobLogMapper, QrtzJobLog> {
 
   /**
   * 任务日志分页列表

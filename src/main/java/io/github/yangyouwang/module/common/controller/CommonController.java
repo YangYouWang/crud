@@ -1,7 +1,7 @@
 package io.github.yangyouwang.module.common.controller;
 
-import io.github.yangyouwang.common.base.CrudBaseController;
-import io.github.yangyouwang.common.domain.Result;
+import io.github.yangyouwang.common.base.controller.BaseController;
+import io.github.yangyouwang.common.base.domain.Result;
 import io.github.yangyouwang.framework.util.aliyun.SampleOSS;
 import io.github.yangyouwang.framework.config.properties.MinioProperties;
 import io.github.yangyouwang.module.common.service.MinIoService;
@@ -26,7 +26,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/common")
 @RequiredArgsConstructor
-public class CommonController extends CrudBaseController {
+public class CommonController extends BaseController {
 
     private final SampleOSS sampleOSS;
 

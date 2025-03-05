@@ -2,8 +2,8 @@ package ${package.Controller};
 
 import ${package.Entity}.${entity};
 import ${package.Service}.${table.serviceName};
-import io.github.yangyouwang.common.domain.Result;
-import io.github.yangyouwang.common.domain.TableDataInfo;
+import io.github.yangyouwang.common.base.domain.Result;
+import io.github.yangyouwang.common.base.domain.TableDataInfo;
 import io.github.yangyouwang.common.annotation.CrudLog;
 import io.github.yangyouwang.common.enums.BusinessType;
 import io.swagger.annotations.Api;

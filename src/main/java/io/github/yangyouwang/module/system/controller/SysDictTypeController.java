@@ -1,9 +1,9 @@
 package io.github.yangyouwang.module.system.controller;
 
 import io.github.yangyouwang.common.annotation.CrudLog;
-import io.github.yangyouwang.common.base.CrudBaseController;
-import io.github.yangyouwang.common.domain.Result;
-import io.github.yangyouwang.common.domain.TableDataInfo;
+import io.github.yangyouwang.common.base.controller.BaseController;
+import io.github.yangyouwang.common.base.domain.Result;
+import io.github.yangyouwang.common.base.domain.TableDataInfo;
 import io.github.yangyouwang.common.enums.BusinessType;
 import io.github.yangyouwang.module.system.entity.SysDictType;
 import io.github.yangyouwang.module.system.service.SysDictTypeService;
@@ -34,7 +34,7 @@ import java.util.Objects;
 @Controller
 @RequestMapping("/system/sysDictType")
 @RequiredArgsConstructor
-public class SysDictTypeController extends CrudBaseController {
+public class SysDictTypeController extends BaseController {
 
     private static final String SUFFIX = "system/sysDictType";
 

@@ -1,7 +1,7 @@
 package io.github.yangyouwang.module.system.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.framework.util.StringUtil;
 import io.github.yangyouwang.module.system.entity.SysRole;
 import io.github.yangyouwang.module.system.entity.SysRoleMenu;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * 角色关联菜单业务层
  */
 @Service
-public class SysRoleMenuService extends ServiceImpl<SysRoleMenuMapper, SysRoleMenu> {
+public class SysRoleMenuService extends BaseService<SysRoleMenuMapper, SysRoleMenu> {
 
     @Resource
     private SysRoleMenuMapper sysRoleMenuMapper;

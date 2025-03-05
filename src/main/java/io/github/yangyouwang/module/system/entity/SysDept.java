@@ -1,7 +1,7 @@
 package io.github.yangyouwang.module.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.yangyouwang.common.domain.BaseTreeEntity;
+import io.github.yangyouwang.common.base.entity.BaseTreeEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

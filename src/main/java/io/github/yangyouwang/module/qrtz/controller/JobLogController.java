@@ -2,8 +2,8 @@ package io.github.yangyouwang.module.qrtz.controller;
 
 import io.github.yangyouwang.module.qrtz.entity.QrtzJobLog;
 import io.github.yangyouwang.module.qrtz.service.JobLogService;
-import io.github.yangyouwang.common.domain.Result;
-import io.github.yangyouwang.common.domain.TableDataInfo;
+import io.github.yangyouwang.common.base.domain.Result;
+import io.github.yangyouwang.common.base.domain.TableDataInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -17,7 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.ui.ModelMap;
 
 import org.springframework.stereotype.Controller;
-import io.github.yangyouwang.common.base.CrudBaseController;
+import io.github.yangyouwang.common.base.controller.BaseController;
 
 import javax.validation.Valid;
 import java.util.Objects;
@@ -33,7 +33,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/qrtz/jobLog")
 @RequiredArgsConstructor
-public class JobLogController extends CrudBaseController {
+public class JobLogController extends BaseController {
 
   private static final String SUFFIX = "qrtz/jobLog";
 

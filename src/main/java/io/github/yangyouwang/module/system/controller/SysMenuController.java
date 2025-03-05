@@ -2,9 +2,9 @@ package io.github.yangyouwang.module.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.github.yangyouwang.common.annotation.CrudLog;
-import io.github.yangyouwang.common.base.CrudBaseController;
-import io.github.yangyouwang.common.domain.Result;
-import io.github.yangyouwang.common.domain.TreeSelectNode;
+import io.github.yangyouwang.common.base.controller.BaseController;
+import io.github.yangyouwang.common.base.domain.Result;
+import io.github.yangyouwang.common.base.domain.TreeSelectNode;
 import io.github.yangyouwang.common.enums.BusinessType;
 import io.github.yangyouwang.module.system.entity.SysMenu;
 import io.github.yangyouwang.module.system.service.SysMenuService;
@@ -36,7 +36,7 @@ import java.util.Objects;
 @Controller
 @RequestMapping("/system/sysMenu")
 @RequiredArgsConstructor
-public class SysMenuController extends CrudBaseController {
+public class SysMenuController extends BaseController {
 
     private static final String SUFFIX = "system/sysMenu";
 

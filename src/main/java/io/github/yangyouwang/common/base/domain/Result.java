@@ -1,6 +1,8 @@
-package io.github.yangyouwang.common.domain;
+package io.github.yangyouwang.common.base.domain;
 
 import io.github.yangyouwang.common.enums.ResultStatus;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -13,13 +15,17 @@ import lombok.ToString;
  */
 @Getter
 @ToString
+@ApiModel(value="响应返回体", description="响应返回体")
 public class Result<T> {
 
     /** 业务错误码 */
+    @ApiModelProperty(value = "业务错误码")
     private Integer code;
     /** 信息描述 */
+    @ApiModelProperty(value = "信息描述")
     private String message;
     /** 返回参数 */
+    @ApiModelProperty(value = "返回参数")
     private T data;
 
     private Result(ResultStatus resultStatus, T data) {

@@ -4,9 +4,9 @@ import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.common.constant.ConfigConsts;
-import io.github.yangyouwang.common.domain.XmSelectNode;
+import io.github.yangyouwang.common.base.domain.XmSelectNode;
 import io.github.yangyouwang.framework.util.excel.CustomRowWriteHandler;
 import io.github.yangyouwang.framework.util.excel.CustomSheetWriteHandler;
 import io.github.yangyouwang.framework.util.excel.EasyExcelUtil;
@@ -51,7 +51,7 @@ import static java.util.Optional.ofNullable;
  * @date 2021/3/2112:37 AM
  */
 @Service
-public class SysUserService extends ServiceImpl<SysUserMapper, SysUser> implements UserDetailsService {
+public class SysUserService extends BaseService<SysUserMapper, SysUser> implements UserDetailsService {
 
     @Resource
     private SysUserMapper sysUserMapper;

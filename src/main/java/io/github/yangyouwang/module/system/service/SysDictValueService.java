@@ -1,6 +1,6 @@
 package io.github.yangyouwang.module.system.service;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.module.system.entity.SysDictType;
 import io.github.yangyouwang.module.system.entity.SysDictValue;
 import io.github.yangyouwang.module.system.mapper.SysDictTypeMapper;
@@ -22,7 +22,7 @@ import java.util.Objects;
  * @date 2021/4/13下午1:11
  */
 @Service
-public class SysDictValueService extends ServiceImpl<SysDictValueMapper, SysDictValue> {
+public class SysDictValueService extends BaseService<SysDictValueMapper, SysDictValue> {
 
     @Resource
     private SysDictTypeMapper sysDictTypeMapper;

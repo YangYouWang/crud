@@ -1,6 +1,6 @@
 package io.github.yangyouwang.module.system.mapper;
 
-import io.github.yangyouwang.common.base.CrudBaseMapper;
+import io.github.yangyouwang.common.base.mapper.BaseMpMapper;
 import io.github.yangyouwang.module.system.entity.SysRole;
 
 /**
@@ -10,7 +10,7 @@ import io.github.yangyouwang.module.system.entity.SysRole;
  * @description: 角色Dao接口
  * @date 2021/3/2112:25 AM
  */
-public interface SysRoleMapper extends CrudBaseMapper<SysRole> {
+public interface SysRoleMapper extends BaseMpMapper<SysRole> {
 
     /**
      * 查询角色

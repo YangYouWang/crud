@@ -1,6 +1,6 @@
 package io.github.yangyouwang.module.system.mapper;
 
-import io.github.yangyouwang.common.base.CrudBaseMapper;
+import io.github.yangyouwang.common.base.mapper.BaseMpMapper;
 import io.github.yangyouwang.module.system.entity.SysUserPost;
 
 /**
@@ -11,6 +11,6 @@ import io.github.yangyouwang.module.system.entity.SysUserPost;
  * @author yangyouwang
  * @since 2022-09-15
  */
-public interface SysUserPostMapper extends CrudBaseMapper<SysUserPost> {
+public interface SysUserPostMapper extends BaseMpMapper<SysUserPost> {
 
 }

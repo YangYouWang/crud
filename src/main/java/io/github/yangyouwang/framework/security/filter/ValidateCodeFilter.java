@@ -2,7 +2,7 @@ package io.github.yangyouwang.framework.security.filter;
 
 import com.alibaba.fastjson.JSON;
 import io.github.yangyouwang.common.constant.ConfigConsts;
-import io.github.yangyouwang.common.domain.Result;
+import io.github.yangyouwang.common.base.domain.Result;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;

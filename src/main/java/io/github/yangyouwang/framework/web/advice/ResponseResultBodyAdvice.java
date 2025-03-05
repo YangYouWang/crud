@@ -1,7 +1,7 @@
 package io.github.yangyouwang.framework.web.advice;
 
 import io.github.yangyouwang.common.annotation.ResponseResultBody;
-import io.github.yangyouwang.common.domain.Result;
+import io.github.yangyouwang.common.base.domain.Result;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.http.MediaType;

@@ -1,6 +1,6 @@
 package io.github.yangyouwang.module.code.controller;
 
-import io.github.yangyouwang.common.domain.Result;
+import io.github.yangyouwang.common.base.domain.Result;
 import io.github.yangyouwang.module.code.model.dto.BuildDTO;
 import io.github.yangyouwang.module.code.model.vo.FieldVO;
 import io.github.yangyouwang.module.code.service.CodeService;

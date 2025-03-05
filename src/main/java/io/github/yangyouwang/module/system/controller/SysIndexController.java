@@ -1,7 +1,7 @@
 package io.github.yangyouwang.module.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import io.github.yangyouwang.common.base.CrudBaseController;
+import io.github.yangyouwang.common.base.controller.BaseController;
 import io.github.yangyouwang.common.constant.ConfigConsts;
 import io.github.yangyouwang.framework.security.util.SecurityUtils;
 import io.github.yangyouwang.framework.util.StringUtil;
@@ -38,7 +38,7 @@ import java.io.IOException;
 @Api(tags = "首页")
 @Controller
 @RequiredArgsConstructor
-public class SysIndexController extends CrudBaseController {
+public class SysIndexController extends BaseController {
 
     private final SysMenuService sysMenuService;
 

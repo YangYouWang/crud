@@ -1,8 +1,8 @@
 package io.github.yangyouwang.module.system.service;
 
+import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.module.system.entity.SysLoginLog;
 import io.github.yangyouwang.module.system.mapper.SysLoginLogMapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
@@ -18,7 +18,7 @@ import java.util.List;
 * @since 2022-08-29
 */
 @Service
-public class SysLoginLogService extends ServiceImpl<SysLoginLogMapper, SysLoginLog> {
+public class SysLoginLogService extends BaseService<SysLoginLogMapper, SysLoginLog> {
 
   /**
   * 用户登录日志记录表分页列表

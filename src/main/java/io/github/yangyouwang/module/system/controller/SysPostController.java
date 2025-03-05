@@ -1,12 +1,12 @@
 package io.github.yangyouwang.module.system.controller;
 
 import io.github.yangyouwang.common.annotation.CrudLog;
-import io.github.yangyouwang.common.domain.XmSelectNode;
+import io.github.yangyouwang.common.base.domain.XmSelectNode;
 import io.github.yangyouwang.common.enums.BusinessType;
 import io.github.yangyouwang.module.system.entity.SysPost;
 import io.github.yangyouwang.module.system.service.SysPostService;
-import io.github.yangyouwang.common.domain.Result;
-import io.github.yangyouwang.common.domain.TableDataInfo;
+import io.github.yangyouwang.common.base.domain.Result;
+import io.github.yangyouwang.common.base.domain.TableDataInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -20,7 +20,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.ui.ModelMap;
 
  import org.springframework.stereotype.Controller;
- import io.github.yangyouwang.common.base.CrudBaseController;
+ import io.github.yangyouwang.common.base.controller.BaseController;
 
 import javax.validation.Valid;
 import java.util.Objects;
@@ -36,7 +36,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/system/sysPost")
 @RequiredArgsConstructor
-public class SysPostController extends CrudBaseController {
+public class SysPostController extends BaseController {
 
   private static final String SUFFIX = "system/sysPost";
 
