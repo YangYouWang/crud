@@ -129,7 +129,8 @@ public class SysUserService extends BaseService<SysUserMapper, SysUser> implemen
      */
     @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED,rollbackFor = Throwable.class)
     public void edit(SysUser sysUser) {
-        if (this.updateById(sysUser)) {
+        boolean isEdit = null != sysUser.getRoleIds() || null != sysUser.getPostIds();
+        if (this.updateById(sysUser) && isEdit) {
             sysUserRoleService.removeSysUserRoleByUserId(sysUser.getId());
             sysUserPostService.removeSysUserPostByUserId(sysUser.getId());
             sysUserRoleService.insertSysUserRole(sysUser);
@@ -231,7 +232,11 @@ public class SysUserService extends BaseService<SysUserMapper, SysUser> implemen
      * @return 用户列表
      */
     public List<XmSelectNode> xmSelect(String ids) {
-        List<SysUser> sysUsers = this.list(new LambdaQueryWrapper<>());
+        List<SysUser> sysUsers = this.list(new LambdaQueryWrapper<SysUser>()
+                .eq(SysUser::getEnabled,ConfigConsts.SYS_YES));
+        if (sysUsers.isEmpty()) {
+            return Collections.emptyList();
+        }
         return sysUsers.stream().map(sysUser -> {
             XmSelectNode treeNode = new XmSelectNode();
             treeNode.setName(sysUser.getNickName());
