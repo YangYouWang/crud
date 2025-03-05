@@ -76,7 +76,7 @@
           elem: '#roleTable'
           ,toolbar: '#toolbar'
           ,height: 'full-110'
-          ,url:  ctx + '/sysRole/page'
+          ,url:  ctx + '/system/sysRole/page'
           ,cellMinWidth: 80
           ,page: true //开启分页
           ,cols: [[ //表头
@@ -124,7 +124,7 @@
                    type: 2
                   ,shade: 0.3
                   ,title: "添加角色"
-                  ,content: ctx + '/sysRole/addPage'
+                  ,content: ctx + '/system/sysRole/addPage'
                   ,maxmin: true
                   ,scrollbar: false
                   ,area: ['100%', '100%']
@@ -144,7 +144,7 @@
                   type: 2
                   ,shade: 0.3
                   ,title: '修改角色'
-                  ,content: ctx + '/sysRole/editPage/' + id
+                  ,content: ctx + '/system/sysRole/editPage/' + id
                   ,maxmin: true
                   ,scrollbar: false
                   ,area: ['100%', '100%']
@@ -164,7 +164,7 @@
                   //向服务端发送删除指令
                   $.ajax({
                       type: 'DELETE',
-                      url:  ctx + '/sysRole/remove/' + id,
+                      url:  ctx + '/system/sysRole/remove/' + id,
                       contentType:'application/json;charset=UTF-8',
                       dataType: 'json',
                       success: function(result) {
@@ -192,7 +192,7 @@
               //向服务端发送删除指令
               $.ajax({
                 type: 'POST',
-                url:  ctx + '/sysRole/removes',
+                url:  ctx + '/system/sysRole/removes',
                 data: JSON.stringify(ids),
                 contentType:'application/json;charset=UTF-8',
                 dataType: 'json',

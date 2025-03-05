@@ -32,7 +32,7 @@ import java.util.List;
  */
 @Api(tags = "日志表")
 @Controller
-@RequestMapping("/sysLog")
+@RequestMapping("/system/sysLog")
 @RequiredArgsConstructor
 public class SysLogController extends CrudController {
 

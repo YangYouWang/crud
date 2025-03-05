@@ -106,7 +106,7 @@
     form.on('submit(save-submit)', function(data){
         $.ajax({
             type: 'POST',
-            url:  ctx + '/sysMenu/add',
+            url:  ctx + '/system/sysMenu/add',
             data: JSON.stringify(data.field),
             contentType:'application/json;charset=UTF-8',
             dataType: 'json',
@@ -125,7 +125,7 @@
     // 菜单向导
     $('.menuWizard').on('click', function () {
       // 树结构向导
-      crud.treeWizard("/sysMenu/treeSelect",function (result) {
+      crud.treeWizard("/system/sysMenu/treeSelect",function (result) {
         form.val('sys-menu-form', {
           parentId: result.id,
           parentName: result.name

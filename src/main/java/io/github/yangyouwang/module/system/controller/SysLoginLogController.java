@@ -27,7 +27,7 @@ import java.util.List;
 */
 @Api(tags = "用户登录日志记录表")
 @Controller
-@RequestMapping("/sysLoginLog")
+@RequestMapping("/system/sysLoginLog")
 @RequiredArgsConstructor
 public class SysLoginLogController extends CrudController {
 

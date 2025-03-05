@@ -85,10 +85,10 @@ public class SwaggerConfig {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("crud-api接口文档")
-                .description("powered by wang")
-                .termsOfServiceUrl("http://www.wbd.plus/")
-                .contact(new Contact("杨有旺", "http://www.wbd.plus/", "616505453@qq.com"))
+                .title("接口文档")
+                .description("powered by yang")
+                .termsOfServiceUrl("https://www.weibendi.cn/")
+                .contact(new Contact("杨先生", "https://www.weibendi.cn/", "616505453@qq.com"))
                 .version("1.0")
                 .build();
     }

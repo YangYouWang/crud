@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>编辑字典</title>
+  <title>编辑${table.comment!}</title>
   <div th:replace="common/link::header"></div>
 </head>
 <body>
@@ -10,34 +10,16 @@
     <div class="layui-card-header">基本信息</div>
     <div class="layui-card-body">
       <div class="layui-row">
-        <div class="layui-form layui-form-pane" lay-filter="sys-dict-type-form" id="sys-dict-type-form">
+        <div class="layui-form layui-form-pane" lay-filter="${table.entityPath}Form" id="${table.entityPath}Form">
           <input type="hidden" name="id" id="id">
-          <div class="layui-form-item">
-            <div class="layui-inline">
-              <label class="layui-form-label">字典名称</label>
+          <#list table.fields as field>
+            <div class="layui-form-item">
+              <label class="layui-form-label">${field.comment}</label>
               <div class="layui-input-inline">
-                <input type="text" name="dictName" lay-verify="required" placeholder="请输入字典名称" class="layui-input">
+                <input type="text" lay-verify="required" class="layui-input" name="${field.propertyName}" placeholder="请输入${field.comment}"/>
               </div>
             </div>
-            <div class="layui-inline">
-              <label class="layui-form-label">字典别名</label>
-              <div class="layui-input-inline">
-                <input type="text" name="dictKey" lay-verify="required" placeholder="请输入字典别名" class="layui-input">
-              </div>
-            </div>
-          </div>
-          <div class="layui-form-item">
-            <div class="layui-inline">
-              <label class="layui-form-label">排序</label>
-              <div class="layui-input-inline">
-                <input type="number" name="orderNum" lay-verify="required" placeholder="请输入排序" class="layui-input">
-              </div>
-            </div>
-            <div class="layui-inline">
-              <label class="layui-form-label">状态</label>
-              <div class="layui-input-block" id="enabled"></div>
-            </div>
-          </div>
+          </#list>
           <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-block">
@@ -76,13 +58,13 @@
     let $ = layui.$,
             form = layui.form,
             crud = layui.crud,
-            sysDictType = [[${sysDictType}]];
-    form.val('sys-dict-type-form', sysDictType);
+            ${table.entityPath} = [[${r'${'}${table.entityPath}${r'}'}]];
+    form.val('${table.entityPath}Form',${table.entityPath});
     // 编辑
     form.on('submit(save-submit)', function(data) {
       $.ajax({
         type: 'POST',
-        url:  ctx + '/system/sysDictType/edit',
+        url:  ctx + '<#if package.ModuleName??>/${package.ModuleName}</#if>/${table.entityPath}/modify',
         data: JSON.stringify(data.field),
         contentType:'application/json;charset=UTF-8',
         dataType: 'json',
@@ -98,7 +80,6 @@
         }
       });
     });
-    crud.setRadio("enabled","enabled",sysDictType.enabled);
   });
 </script>
 </body>

@@ -32,7 +32,7 @@ import java.util.Objects;
  */
 @Api(tags = "数据字典类型")
 @Controller
-@RequestMapping("/sysDictType")
+@RequestMapping("/system/sysDictType")
 @RequiredArgsConstructor
 public class SysDictTypeController extends CrudController {
 

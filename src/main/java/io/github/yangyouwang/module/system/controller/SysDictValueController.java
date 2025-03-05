@@ -28,7 +28,7 @@ import java.util.Objects;
  */
 @Api(tags = "数据字典项")
 @Controller
-@RequestMapping("/sysDictValue")
+@RequestMapping("/system/sysDictValue")
 @RequiredArgsConstructor
 public class SysDictValueController extends CrudController {
 

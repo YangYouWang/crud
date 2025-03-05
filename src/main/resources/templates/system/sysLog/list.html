@@ -79,7 +79,7 @@
           elem: '#logTable'
           ,toolbar: '#toolbar'
           ,height: 'full-110'
-          ,url:  ctx + '/sysLog/page'
+          ,url:  ctx + '/system/sysLog/page'
           ,cellMinWidth: 80
           ,page: true //开启分页,
           ,cols: [[ //表头
@@ -128,7 +128,7 @@
           layer.confirm('真的删除行么', function(index) {
             $.ajax({
               type: 'DELETE',
-              url:  ctx + '/sysLog/remove/' + id,
+              url:  ctx + '/system/sysLog/remove/' + id,
               contentType:'application/json;charset=UTF-8',
               dataType: 'json',
               success: function(result) {
@@ -151,7 +151,7 @@
             //向服务端发送删除指令
             $.ajax({
               type: 'POST',
-              url:  ctx + '/sysLog/removes',
+              url:  ctx + '/system/sysLog/removes',
               data: JSON.stringify(ids),
               contentType:'application/json;charset=UTF-8',
               dataType: 'json',
@@ -174,7 +174,7 @@
             type: 2
             ,shade: 0.3
             ,title: '日志详情'
-            ,content: ctx + '/sysLog/infoPage/' + id
+            ,content: ctx + '/system/sysLog/infoPage/' + id
             ,maxmin: true
             ,scrollbar: false
             ,area: ['100%', '100%']

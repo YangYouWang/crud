@@ -123,7 +123,7 @@
           elem: '#userTable'
           ,toolbar: '#toolbar'
           ,height: 'full-110'
-          ,url:  ctx + '/sysUser/page'
+          ,url:  ctx + '/system/sysUser/page'
           ,cellMinWidth: 80
           ,page: true //开启分页
           ,cols: [[ //表头
@@ -183,7 +183,7 @@
             shade: false,
             time: 2 * 1000
           });
-          $(location).attr('href',  ctx + '/sysUser/exportExcel');
+          $(location).attr('href',  ctx + '/system/sysUser/exportExcel');
           // 关闭loading
           layer.close(loading);
         },
@@ -195,7 +195,7 @@
             type: 2
             ,shade: 0.3
             ,title: "添加用户"
-            ,content: ctx + '/sysUser/addPage'
+            ,content: ctx + '/system/sysUser/addPage'
             ,maxmin: true
             ,scrollbar: false
             ,area: ['100%', '100%']
@@ -215,7 +215,7 @@
             type: 2
             ,shade: 0.3
             ,title: '修改用户'
-            ,content: ctx + '/sysUser/editPage/' + id
+            ,content: ctx + '/system/sysUser/editPage/' + id
             ,maxmin: true
             ,scrollbar: false
             ,area: ['100%', '100%']
@@ -235,7 +235,7 @@
             //向服务端发送删除指令
             $.ajax({
               type: 'DELETE',
-              url:  ctx + '/sysUser/remove/' + id,
+              url:  ctx + '/system/sysUser/remove/' + id,
               contentType:'application/json;charset=UTF-8',
               dataType: 'json',
               success: function(result) {
@@ -263,7 +263,7 @@
             //向服务端发送删除指令
             $.ajax({
               type: 'POST',
-              url:  ctx + '/sysUser/removes',
+              url:  ctx + '/system/sysUser/removes',
               data: JSON.stringify(ids),
               contentType:'application/json;charset=UTF-8',
               dataType: 'json',
@@ -285,7 +285,7 @@
         changeUserEnabled: function (userId,checked) {
           $.ajax({
             type: 'POST',
-            url:  ctx + '/sysUser/edit',
+            url:  ctx + '/system/sysUser/edit',
             data: JSON.stringify({
               id: userId,
               enabled: checked
@@ -308,7 +308,7 @@
           layer.confirm('确认重置密码么', function(index) {
             $.ajax({
               type: 'POST',
-              url:  ctx + '/sysUser/resetPass',
+              url:  ctx + '/system/sysUser/resetPass',
               data: JSON.stringify({
                 id
               }),

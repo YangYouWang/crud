@@ -83,7 +83,7 @@
               elem: '#menuTable',
               toolbar: '#toolbar',
               height: 'full-110',
-              url:  ctx + '/sysMenu/page',
+              url:  ctx + '/system/sysMenu/page',
               cellMinWidth: 80,
               where: data,
               cols: [[ //表头
@@ -151,7 +151,7 @@
                    type: 2
                   ,shade: 0.3
                   ,title: "添加菜单"
-                  ,content: fun.appendUrlParams(ctx + "/sysMenu/addPage", data, ["id","menuName"])
+                  ,content: fun.appendUrlParams(ctx + "/system/sysMenu/addPage", data, ["id","menuName"])
                   ,maxmin: true
                   ,scrollbar: false
                   ,area: ['100%', '100%']
@@ -171,7 +171,7 @@
                   type: 2
                   ,shade: 0.3
                   ,title: '修改菜单'
-                  ,content: ctx + '/sysMenu/editPage/' + id
+                  ,content: ctx + '/system/sysMenu/editPage/' + id
                   ,maxmin: true
                   ,scrollbar: false
                   ,area: ['100%', '100%']
@@ -191,7 +191,7 @@
                   //向服务端发送删除指令
                   $.ajax({
                       type: 'DELETE',
-                      url:  ctx + '/sysMenu/remove/' + id,
+                      url:  ctx + '/system/sysMenu/remove/' + id,
                       contentType:'application/json;charset=UTF-8',
                       dataType: 'json',
                       success: function(result) {
@@ -212,7 +212,7 @@
           changeMenuVisible: function (id,checked) {
             $.ajax({
               type: 'POST',
-              url:  ctx + '/sysMenu/edit',
+              url:  ctx + '/system/sysMenu/edit',
               data: JSON.stringify({
                 id: id,
                 visible: checked

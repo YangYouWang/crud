@@ -1,0 +1,5 @@
+INSERT INTO `sys_menu` (menu_name,parent_id,order_num,icon,url,menu_type,visible,perms) VALUES ('${table.comment!}管理', <#if cfg??>${cfg.menuId}<#else>0</#if>, '1', 'layui-icon-home', '<#if package.ModuleName??>/${package.ModuleName}</#if>/${table.entityPath}/listPage', 'C', 'Y', '${table.entityPath}:list');
+SELECT @parentId := LAST_INSERT_ID();
+INSERT INTO `sys_menu` (menu_name,parent_id,order_num,icon,url,menu_type,visible,perms) VALUES ('添加${table.comment!}', @parentId, '1', '', '#', 'F', 'Y', '${table.entityPath}:add');
+INSERT INTO `sys_menu` (menu_name,parent_id,order_num,icon,url,menu_type,visible,perms) VALUES ('编辑${table.comment!}', @parentId, '2', '', '#', 'F', 'Y', '${table.entityPath}:edit');
+INSERT INTO `sys_menu` (menu_name,parent_id,order_num,icon,url,menu_type,visible,perms) VALUES ('删除${table.comment!}', @parentId, '3', '', '#', 'F', 'Y', '${table.entityPath}:del');

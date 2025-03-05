@@ -42,7 +42,7 @@ import java.util.Objects;
  */
 @Api(tags = "用户表")
 @Controller
-@RequestMapping("/sysUser")
+@RequestMapping("/system/sysUser")
 @RequiredArgsConstructor
 public class SysUserController extends CrudController {
 

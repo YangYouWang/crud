@@ -45,7 +45,7 @@ public class MailProperties {
     private String sendPersonName;
 
     /**
-     *发信地址代码 1
+     *发信地址代码
      */
     private Integer addressType;
 

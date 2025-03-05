@@ -36,7 +36,7 @@ import java.util.Objects;
  */
 @Api(tags = "角色表")
 @Controller
-@RequestMapping("/sysRole")
+@RequestMapping("/system/sysRole")
 @RequiredArgsConstructor
 public class SysRoleController extends CrudController {
 

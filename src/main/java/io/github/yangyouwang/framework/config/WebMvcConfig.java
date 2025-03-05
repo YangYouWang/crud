@@ -51,8 +51,8 @@ public class WebMvcConfig implements WebMvcConfigurer, WebMvcRegistrations {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addRedirectViewController("/sysTool/swagger","/swagger-ui.html");
-        registry.addRedirectViewController("/sysTool/druid","/druid/index.html");
+        registry.addRedirectViewController("/tool/swagger","/swagger-ui.html");
+        registry.addRedirectViewController("/tool/druid","/druid/index.html");
     }
 
     /**

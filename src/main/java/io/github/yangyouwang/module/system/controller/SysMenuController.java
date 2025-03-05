@@ -34,7 +34,7 @@ import java.util.Objects;
  */
 @Api(tags = "菜单表")
 @Controller
-@RequestMapping("/sysMenu")
+@RequestMapping("/system/sysMenu")
 @RequiredArgsConstructor
 public class SysMenuController extends CrudController {
 

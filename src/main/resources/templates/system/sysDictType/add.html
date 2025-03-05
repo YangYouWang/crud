@@ -64,7 +64,7 @@
     form.on('submit(save-submit)', function(data) {
       $.ajax({
         type: 'POST',
-        url:  ctx + '/sysDictType/add',
+        url:  ctx + '/system/sysDictType/add',
         data: JSON.stringify(data.field),
         contentType:'application/json;charset=UTF-8',
         dataType: 'json',
