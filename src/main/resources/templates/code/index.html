@@ -12,7 +12,7 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">作者</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="author" lay-verify="required" placeholder="请输入作者" class="layui-input layui-disabled" value="yangyouwang">
+                        <input type="text" name="author" lay-verify="required" placeholder="请输入作者" class="layui-input" value="yangyouwang">
                     </div>
                 </div>
                 <div class="layui-inline">
@@ -128,7 +128,7 @@
         // 菜单向导
         $('.menuWizard').on('click', function () {
             // 树结构向导
-            crud.treeWizard("/sysMenu/treeSelect",function (result) {
+            crud.treeWizard("/system/sysMenu/treeSelect",function (result) {
                 form.val('codeConfigForm', {
                     menuId: result.id,
                     menuName: result.name
