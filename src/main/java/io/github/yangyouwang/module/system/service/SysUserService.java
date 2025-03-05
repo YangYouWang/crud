@@ -231,11 +231,7 @@ public class SysUserService extends BaseService<SysUserMapper, SysUser> implemen
      * @return 用户列表
      */
     public List<XmSelectNode> xmSelect(String ids) {
-        List<SysUser> sysUsers = this.list(new LambdaQueryWrapper<SysUser>()
-                .eq(SysUser::getEnabled,ConfigConsts.SYS_YES));
-        if (sysUsers.isEmpty()) {
-            return Collections.emptyList();
-        }
+        List<SysUser> sysUsers = this.list(new LambdaQueryWrapper<>());
         return sysUsers.stream().map(sysUser -> {
             XmSelectNode treeNode = new XmSelectNode();
             treeNode.setName(sysUser.getNickName());

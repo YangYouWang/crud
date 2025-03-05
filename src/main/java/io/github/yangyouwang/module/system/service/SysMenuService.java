@@ -114,8 +114,7 @@ public class SysMenuService extends BaseService<SysMenuMapper, SysMenu> {
      */
     @Transactional(readOnly = true)
     public List<TreeSelectNode> xmSelect(String ids) {
-        List<SysMenu> menus = this.list(new LambdaQueryWrapper<SysMenu>()
-                .eq(SysMenu::getVisible,ConfigConsts.SYS_YES));
+        List<SysMenu> menus = this.list(new LambdaQueryWrapper<>());
         // 父菜单ID是否存在顶级
         boolean flag = menus.stream().anyMatch(s -> 0 == s.getParentId());
         if (menus.isEmpty()|| !flag) {
