@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 /**
  * 用户关联角色业务层
+ * @author yangyouwang
  */
 @Service
 public class SysUserRoleService extends BaseService<SysUserRoleMapper, SysUserRole> {

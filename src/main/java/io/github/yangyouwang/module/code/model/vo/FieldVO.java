@@ -3,7 +3,10 @@ package io.github.yangyouwang.module.code.model.vo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-
+/**
+ * 表字段
+ * @author yangyouwang
+ */
 @Data
 @ApiModel("表字段")
 public class FieldVO {

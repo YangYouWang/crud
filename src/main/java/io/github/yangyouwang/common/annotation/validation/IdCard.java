@@ -94,7 +94,7 @@ public @interface IdCard {
         }
 
         private static Map<String, String> initCityMap() {
-            Map<String, String> cityMap = new HashMap<String, String>();
+            Map<String, String> cityMap = new HashMap<>();
             cityMap.put("11", "北京");
             cityMap.put("12", "天津");
             cityMap.put("13", "河北");

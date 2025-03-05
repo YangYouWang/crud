@@ -7,7 +7,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -73,7 +72,7 @@ public class SysMenuVO implements Treeable {
 
     /** 子菜单 */
     @ApiModelProperty(value = "子菜单")
-    private List<SysMenu> children = new ArrayList<>();
+    private List<SysMenu> children;
     /**
      * 父菜单名称
      */

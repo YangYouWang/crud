@@ -12,7 +12,6 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import io.github.yangyouwang.common.base.controller.BaseController;
 import io.github.yangyouwang.common.base.entity.BaseEntity;
-import io.github.yangyouwang.common.base.mapper.BaseMpMapper;
 import io.github.yangyouwang.common.base.service.BaseService;
 import io.github.yangyouwang.framework.web.exception.BusinessException;
 import io.github.yangyouwang.module.code.model.dto.BuildDTO;
@@ -33,6 +32,7 @@ import java.util.Map;
 
 /**
  * 生成代码业务层
+ * @author yangyouwang
  */
 @Service
 public class CodeService {
@@ -106,11 +106,32 @@ public class CodeService {
      * @param build 生成代码
      */
     public void build(BuildDTO build) {
-        String path = System.getProperty("user.dir");
         AutoGenerator mpg = new AutoGenerator();
         // 全局配置
+        GlobalConfig gc = this.getGlobalConfig(build);
+        mpg.setGlobalConfig(gc);
+        // 数据源
+        DataSourceConfig dsc = this.getDataSourceConfig();
+        mpg.setDataSource(dsc);
+        // 包配置
+        PackageConfig pc = this.getPackageConfig(build);
+        mpg.setPackageInfo(pc);
+        // 自定义配置
+        InjectionConfig cfg = this.getInjectionConfig(build, pc);
+        mpg.setCfg(cfg);
+        // 配置模板
+        TemplateConfig templateConfig = this.getTemplateConfig();
+        mpg.setTemplate(templateConfig);
+        // 策略配置
+        StrategyConfig strategy = this.getStrategy(build, pc);
+        mpg.setStrategy(strategy);
+        mpg.setTemplateEngine(new FreemarkerTemplateEngine());
+        mpg.execute();
+    }
+
+    public GlobalConfig getGlobalConfig(BuildDTO build) {
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir(path + "/src/main/java");
+        gc.setOutputDir(System.getProperty("user.dir") + "/src/main/java");
         gc.setAuthor(build.getAuthor());
         gc.setOpen(false);
         //实体属性 Swagger2 注解
@@ -120,20 +141,39 @@ public class CodeService {
         gc.setServiceName("%sService");
         //定义生成的实体类中日期类型
         gc.setDateType(DateType.ONLY_DATE);
-        mpg.setGlobalConfig(gc);
-        // 数据源配置
-        DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl(url);
-        dsc.setDriverName(driverClassName);
-        dsc.setUsername(username);
-        dsc.setPassword(password);
-        mpg.setDataSource(dsc);
-        // 包配置
+        return gc;
+    }
+
+    public PackageConfig getPackageConfig(BuildDTO build) {
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(build.getModuleName());
         pc.setParent("io.github.yangyouwang.module");
-        mpg.setPackageInfo(pc);
-        // 自定义配置
+        return pc;
+    }
+
+    public StrategyConfig getStrategy(BuildDTO build, PackageConfig pc) {
+        StrategyConfig strategy = new StrategyConfig();
+        strategy.setNaming(NamingStrategy.underline_to_camel);
+        strategy.setColumnNaming(NamingStrategy.underline_to_camel);
+        strategy.setSuperEntityClass(BaseEntity.class);
+        strategy.setSuperControllerClass(BaseController.class);
+        strategy.setSuperServiceClass(BaseService.class);
+        strategy.setSuperEntityColumns("id","create_by","create_time","update_by","update_time","deleted","remark");
+        strategy.setEntityLombokModel(true);
+        strategy.setRestControllerStyle(false);
+        String[] tableName = new String[]{build.getTableName()};
+        strategy.setInclude(tableName);
+        //url中驼峰转连字符
+        strategy.setControllerMappingHyphenStyle(true);
+        //生成实体时去掉表前缀
+        strategy.setTablePrefix(pc.getModuleName() + "_");
+        // lombok 模型 @Accessors(chain = true) setter链式操作
+        strategy.setEntityLombokModel(true);
+        return strategy;
+    }
+
+    public InjectionConfig getInjectionConfig(BuildDTO build, PackageConfig pc) {
+        String path = System.getProperty("user.dir");
         InjectionConfig cfg = new InjectionConfig() {
             @Override
             public void initMap() {
@@ -193,8 +233,10 @@ public class CodeService {
             }
         });
         cfg.setFileOutConfigList(focList);
-        mpg.setCfg(cfg);
-        // 配置模板
+        return cfg;
+    }
+
+    public TemplateConfig getTemplateConfig() {
         TemplateConfig templateConfig = new TemplateConfig();
         // 配置自定义输出模板
         //指定自定义模板路径，注意不要带上.ftl/.vm, 会根据使用的模板引擎自动识别
@@ -203,37 +245,23 @@ public class CodeService {
         templateConfig.setService(null);
         templateConfig.setServiceImpl(null);
         templateConfig.setXml(null);
-        mpg.setTemplate(templateConfig);
-        // 策略配置
-        StrategyConfig strategy = new StrategyConfig();
-        strategy.setNaming(NamingStrategy.underline_to_camel);
-        strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        strategy.setSuperEntityClass(BaseEntity.class);
-        strategy.setSuperControllerClass(BaseController.class);
-        strategy.setSuperServiceClass(BaseService.class);
-        strategy.setSuperEntityColumns("id","create_by","create_time","update_by","update_time","deleted","remark");
-        strategy.setEntityLombokModel(true);
-        strategy.setRestControllerStyle(false);
-        String[] tableName = new String[]{build.getTableName()};
-        strategy.setInclude(tableName);
-        //url中驼峰转连字符
-        strategy.setControllerMappingHyphenStyle(true);
-        //生成实体时去掉表前缀
-        strategy.setTablePrefix(pc.getModuleName() + "_");
-        // lombok 模型 @Accessors(chain = true) setter链式操作
-        strategy.setEntityLombokModel(true);
-        mpg.setStrategy(strategy);
-        mpg.setTemplateEngine(new FreemarkerTemplateEngine());
-        mpg.execute();
+        return templateConfig;
     }
 
     @PostConstruct
-    public void getDataSourceProperty() {
+    public DataSourceConfig getDataSourceConfig() {
         Map<String, DataSourceProperty> datasource = dynamicDataSourceProperties.getDatasource();
         DataSourceProperty master = datasource.get("master");
         driverClassName = master.getDriverClassName();
         url = master.getUrl();
         username = master.getUsername();
         password = master.getPassword();
+        // 数据源配置
+        DataSourceConfig dsc = new DataSourceConfig();
+        dsc.setUrl(url);
+        dsc.setDriverName(driverClassName);
+        dsc.setUsername(username);
+        dsc.setPassword(password);
+        return dsc;
     }
 }

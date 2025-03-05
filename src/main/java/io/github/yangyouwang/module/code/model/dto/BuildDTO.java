@@ -4,6 +4,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+/**
+ * 代码生成
+ * @author yangyouwang
+ */
 @Data
 @ApiModel("代码生成DTO")
 public class BuildDTO {

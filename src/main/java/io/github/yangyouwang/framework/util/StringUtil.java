@@ -41,7 +41,7 @@ public class StringUtil {
     }
     /**方法2*/
     public static String randomName(boolean simple, int len) {
-        String surName[] = {
+        String[] surName = {
                 "赵","钱","孙","李","周","吴","郑","王","冯","陈","楮","卫","蒋","沈","韩","杨",
                 "朱","秦","尤","许","何","吕","施","张","孔","曹","严","华","金","魏","陶","姜",
                 "戚","谢","邹","喻","柏","水","窦","章","云","苏","潘","葛","奚","范","彭","郎",
@@ -71,7 +71,7 @@ public class StringUtil {
                 "岳","帅","缑","亢","况","后","有","琴","商","牟","佘","佴","伯","赏","墨","哈",
                 "谯","笪","年","爱","阳","佟"};
 
-        String doubleSurName[] = {"万俟","司马","上官","欧阳","夏侯","诸葛","闻人","东方",
+        String[] doubleSurName = {"万俟","司马","上官","欧阳","夏侯","诸葛","闻人","东方",
                 "赫连","皇甫","尉迟","公羊","澹台","公冶","宗政","濮阳","淳于","单于","太叔","申屠",
                 "公孙","仲孙","轩辕","令狐","锺离","宇文","长孙","慕容","鲜于","闾丘","司徒","司空",
                 "丌官","司寇","仉","督","子车","颛孙","端木","巫马","公西","漆雕","乐正","壤驷","公良",
@@ -243,7 +243,7 @@ public class StringUtil {
      */
     public static Map<String, Object> paramToMap(String paramStr) {
         String[] params = paramStr.split("&");
-        Map<String, Object> resMap = new HashMap<String, Object>();
+        Map<String, Object> resMap = new HashMap<>();
         for (int i = 0; i < params.length; i++) {
             String[] param = params[i].split("=");
             if (param.length >= 2) {

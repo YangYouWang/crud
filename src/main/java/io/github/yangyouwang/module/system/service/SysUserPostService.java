@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 /**
  * 用户关联岗位业务层
+ * @author yangyouwang
  */
 @Service
 public class SysUserPostService extends BaseService<SysUserPostMapper, SysUserPost> {
