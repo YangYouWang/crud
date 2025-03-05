@@ -84,7 +84,8 @@
        $.ajax({
         type: "get",
         url:  ctx + '/system/sysDept/treeSelect',
-        success: function(data) {
+        success: function(res) {
+          let data = res.data;
           let zTree = $.fn.zTree.init($("#deptTree"), fun.setting(function (event,treeId,treeNode) {
             let deptIds = fun.getzTreeChildrenNodeIds(treeNode);
             //执行重载

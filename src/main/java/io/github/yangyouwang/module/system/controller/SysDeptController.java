@@ -120,7 +120,8 @@ public class SysDeptController extends BaseController {
    */
   @GetMapping("/treeSelect")
   @ResponseBody
-  public List<TreeSelectNode> treeSelect() {
-    return sysDeptService.treeSelect();
+  public Result treeSelect() {
+    List<TreeSelectNode> treeSelectNodes = sysDeptService.treeSelect();
+    return Result.success(treeSelectNodes);
   }
 }

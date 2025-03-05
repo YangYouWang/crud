@@ -145,8 +145,9 @@ public class SysMenuController extends BaseController {
      */
     @GetMapping("/treeSelect")
     @ResponseBody
-    public List<TreeSelectNode> treeSelect() {
-        return sysMenuService.treeSelect();
+    public Result treeSelect() {
+        List<TreeSelectNode> treeSelectNodes = sysMenuService.treeSelect();
+        return Result.success(treeSelectNodes);
     }
 
     /**
@@ -156,7 +157,8 @@ public class SysMenuController extends BaseController {
      */
     @GetMapping("/xmSelect")
     @ResponseBody
-    public List<TreeSelectNode> xmSelect(@RequestParam(value = "ids",required = false) String ids) {
-        return sysMenuService.xmSelect(ids);
+    public Result xmSelect(@RequestParam(value = "ids",required = false) String ids) {
+        List<TreeSelectNode> treeSelectNodes = sysMenuService.xmSelect(ids);
+        return Result.success(treeSelectNodes);
     }
 }

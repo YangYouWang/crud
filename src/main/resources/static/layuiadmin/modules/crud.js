@@ -133,9 +133,14 @@ layui.extend({
                 type: 'get',
                 url: ctx + url,
                 success: function(res) {
-                    select.update({
-                        data: res
-                    })
+                    let data = res.data;
+                    if (data.length == 0) {
+                        layer.msg('暂无列表数据')
+                    } else {
+                        select.update({
+                            data
+                        })
+                    }
                 }
             });
         },

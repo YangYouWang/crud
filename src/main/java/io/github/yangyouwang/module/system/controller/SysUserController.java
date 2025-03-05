@@ -242,7 +242,8 @@ public class SysUserController extends BaseController {
      */
     @GetMapping("/xmSelect")
     @ResponseBody
-    public List<XmSelectNode> xmSelect(@RequestParam(value = "ids",required = false) String ids) {
-        return sysUserService.xmSelect(ids);
+    public Result xmSelect(@RequestParam(value = "ids",required = false) String ids) {
+        List<XmSelectNode> xmSelectNodes = sysUserService.xmSelect(ids);
+        return Result.success(xmSelectNodes);
     }
 }

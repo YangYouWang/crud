@@ -126,7 +126,8 @@ public class SysPostController extends BaseController {
    */
   @GetMapping("/xmSelect")
   @ResponseBody
-  public List<XmSelectNode> xmSelect(@RequestParam(value = "ids",required = false) String ids) {
-    return sysPostService.xmSelect(ids);
+  public Result xmSelect(@RequestParam(value = "ids",required = false) String ids) {
+    List<XmSelectNode> xmSelectNodes = sysPostService.xmSelect(ids);
+    return Result.success(xmSelectNodes);
   }
 }
