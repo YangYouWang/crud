@@ -39,13 +39,14 @@ public class CodeController {
     }
 
     /**
-     * 查询表列表
-     * @return 表
+     * 查询表名称列表
+     * @return 表名称列表
      */
     @GetMapping("/table")
     @ResponseBody
-    public List<String> table() {
-        return codeService.selectTable();
+    public Result table() {
+        List<String> tables = codeService.selectTable();
+        return Result.success(tables);
     }
 
     /**
@@ -54,8 +55,9 @@ public class CodeController {
      */
     @GetMapping("/field")
     @ResponseBody
-    public List<FieldVO> field(String tableName) {
-        return codeService.selectField(tableName);
+    public Result field(String tableName) {
+        List<FieldVO> fields = codeService.selectField(tableName);
+        return Result.success(fields);
     }
 
     /**
@@ -70,6 +72,6 @@ public class CodeController {
             throw new RuntimeException(Objects.requireNonNull(bindingResult.getFieldError()).getDefaultMessage());
         }
         codeService.build(build);
-        return Result.success("生成代码在项目工程中");
+        return Result.success();
     }
 }

@@ -77,7 +77,8 @@
                     layer.msg(result.message);
                     return;
                 }
-                $.each(result, function (index, value) {
+                let data = result.data;
+                $.each(data, function (index, value) {
                     $('#tableName').append(new Option(value,value));
                 });
                 layui.form.render("select");
@@ -88,7 +89,8 @@
                 url: ctx + '/code/field?tableName='+data.value,
                 dataType: 'json',
                 type: 'get',
-                success: function (data) {
+                success: function (result) {
+                    let data = result.data;
                     table.reload('fieldList',{
                         data
                     });

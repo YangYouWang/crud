@@ -105,7 +105,6 @@ public class CodeService {
      */
     public void build(BuildDTO build) {
         String path = System.getProperty("user.dir");
-        // 代码生成器
         AutoGenerator mpg = new AutoGenerator();
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
@@ -114,7 +113,6 @@ public class CodeService {
         gc.setOpen(false);
         //实体属性 Swagger2 注解
         gc.setSwagger2(true);
-        //TODO 是否覆盖已有的文件
         gc.setFileOverride(true);
         // 自定义Service模板 文件名
         gc.setServiceName("%sService");
