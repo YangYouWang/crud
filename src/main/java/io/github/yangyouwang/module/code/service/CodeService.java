@@ -146,7 +146,7 @@ public class CodeService {
         focList.add(new FileOutConfig("/ftl/java/service.java.ftl") {
             @Override
             public String outputFile(TableInfo tableInfo) {
-                return path + "/src/main/java/io/github/yangyouwang/crud/" + pc.getModuleName()
+                return path + "/src/main/java/io/github/yangyouwang/module/" + pc.getModuleName()
                         + "/service/" + tableInfo.getEntityName() + "Service" + StringPool.DOT_JAVA;
             }
         });
