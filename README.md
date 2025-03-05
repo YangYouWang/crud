@@ -126,7 +126,7 @@ sec:authorize="hasAuthority('权限标识')" // thymeleaf声明
 ```  
     14.图片上传组件
 ```
-    crud.uploadImg("id节点");
+    crud.uploadFile("id节点");
 ```  
     15.向导页面组件
 ```

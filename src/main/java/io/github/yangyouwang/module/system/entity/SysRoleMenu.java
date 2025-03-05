@@ -1,7 +1,6 @@
 package io.github.yangyouwang.module.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.yangyouwang.common.base.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -13,7 +12,7 @@ import lombok.Data;
 @Data
 @TableName("sys_role_menu")
 @ApiModel(value="SysRoleMenu对象", description="角色菜单中间表")
-public class SysRoleMenu extends BaseEntity {
+public class SysRoleMenu {
     /**
      * 角色ID
      */

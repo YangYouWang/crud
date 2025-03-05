@@ -1,7 +1,6 @@
 package io.github.yangyouwang.module.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.yangyouwang.common.base.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -17,7 +16,7 @@ import lombok.Data;
 @Data
 @TableName("sys_user_post")
 @ApiModel(value="SysUserPost对象", description="用户岗位关联表")
-public class SysUserPost extends BaseEntity {
+public class SysUserPost {
 
     @ApiModelProperty(value = "用户外键")
     private Long userId;

@@ -155,11 +155,11 @@
             });
         });
         // 角色多选
-        crud.initXmSelect("/sysRole/xmSelect","roleIds",sysUser);
+        crud.initXmSelect("/system/sysRole/xmSelect","roleIds",sysUser);
         // 岗位多选
         crud.initXmSelect("/system/sysPost/xmSelect","postIds",sysUser);
         //普通图片上传
-        crud.uploadImg("avatar");
+        crud.uploadFile("avatar");
         // 部门向导
         $('.deptWizard').on('click', function () {
             // 树结构向导
