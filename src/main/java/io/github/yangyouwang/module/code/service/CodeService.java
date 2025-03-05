@@ -1,6 +1,5 @@
 package io.github.yangyouwang.module.code.service;
 
-import com.alibaba.druid.pool.DruidDataSource;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
@@ -132,7 +131,7 @@ public class CodeService {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(build.getModuleName());
-        pc.setParent("io.github.yangyouwang.crud");
+        pc.setParent("io.github.yangyouwang.module");
         mpg.setPackageInfo(pc);
         // 自定义配置
         InjectionConfig cfg = new InjectionConfig() {
@@ -153,7 +152,7 @@ public class CodeService {
                         + "/service/" + tableInfo.getEntityName() + "Service" + StringPool.DOT_JAVA;
             }
         });
-        focList.add(new FileOutConfig("/mapper.xml.ftl") {
+        focList.add(new FileOutConfig("/templates/mapper.xml.ftl") {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
