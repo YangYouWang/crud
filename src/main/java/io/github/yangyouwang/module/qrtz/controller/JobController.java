@@ -1,7 +1,7 @@
 package io.github.yangyouwang.module.qrtz.controller;
 
 import io.github.yangyouwang.common.annotation.CrudLog;
-import io.github.yangyouwang.common.base.CrudController;
+import io.github.yangyouwang.common.base.CrudBaseController;
 import io.github.yangyouwang.common.domain.TableDataInfo;
 import io.github.yangyouwang.common.enums.BusinessType;
 import io.github.yangyouwang.module.qrtz.entity.QrtzJob;
@@ -35,7 +35,7 @@ import java.util.Objects;
 @Controller
 @RequestMapping("/qrtz/job")
 @RequiredArgsConstructor
-public class JobController extends CrudController {
+public class JobController extends CrudBaseController {
 
   private static final String SUFFIX = "qrtz/job";
 

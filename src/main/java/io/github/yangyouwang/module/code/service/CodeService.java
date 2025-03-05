@@ -10,7 +10,7 @@ import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-import io.github.yangyouwang.common.base.CrudController;
+import io.github.yangyouwang.common.base.CrudBaseController;
 import io.github.yangyouwang.common.domain.BaseEntity;
 import io.github.yangyouwang.framework.web.exception.BusinessException;
 import io.github.yangyouwang.module.code.model.dto.BuildDTO;
@@ -207,7 +207,7 @@ public class CodeService {
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setSuperEntityClass(BaseEntity.class);
-        strategy.setSuperControllerClass(CrudController.class);
+        strategy.setSuperControllerClass(CrudBaseController.class);
         strategy.setSuperEntityColumns("id","create_by","create_time","update_by","update_time","deleted","remark");
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(false);

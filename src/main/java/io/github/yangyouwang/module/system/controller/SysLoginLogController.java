@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-import io.github.yangyouwang.common.base.CrudController;
+import io.github.yangyouwang.common.base.CrudBaseController;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -29,7 +29,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/system/sysLoginLog")
 @RequiredArgsConstructor
-public class SysLoginLogController extends CrudController {
+public class SysLoginLogController extends CrudBaseController {
 
   private static final String SUFFIX = "system/sysLoginLog";
 

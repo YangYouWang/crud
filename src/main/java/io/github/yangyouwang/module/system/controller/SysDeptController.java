@@ -17,7 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.ui.ModelMap;
 import org.springframework.stereotype.Controller;
-import io.github.yangyouwang.common.base.CrudController;
+import io.github.yangyouwang.common.base.CrudBaseController;
 
 import javax.validation.Valid;
 import java.util.Objects;
@@ -33,7 +33,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/system/sysDept")
 @RequiredArgsConstructor
-public class SysDeptController extends CrudController {
+public class SysDeptController extends CrudBaseController {
 
   private static final String SUFFIX = "system/sysDept";
 

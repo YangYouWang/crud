@@ -19,7 +19,7 @@ import java.util.Objects;
  * @version v1.0
  * @since JDK 1.8
  */
-public class CrudController {
+public class CrudBaseController {
 
     /**
      * 设置请求分页数据

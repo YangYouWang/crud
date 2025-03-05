@@ -2,7 +2,7 @@ package io.github.yangyouwang.module.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.github.yangyouwang.common.annotation.CrudLog;
-import io.github.yangyouwang.common.base.CrudController;
+import io.github.yangyouwang.common.base.CrudBaseController;
 import io.github.yangyouwang.common.domain.Result;
 import io.github.yangyouwang.common.domain.TableDataInfo;
 import io.github.yangyouwang.common.enums.BusinessType;
@@ -34,7 +34,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/system/sysLog")
 @RequiredArgsConstructor
-public class SysLogController extends CrudController {
+public class SysLogController extends CrudBaseController {
 
     private static final String SUFFIX = "system/sysLog";
 

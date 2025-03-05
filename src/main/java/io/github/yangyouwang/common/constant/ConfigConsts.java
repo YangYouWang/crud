@@ -1,7 +1,5 @@
 package io.github.yangyouwang.common.constant;
 
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * 通用常量
@@ -24,34 +22,6 @@ public interface ConfigConsts {
      * 字典性别key
      */
     String DICT_KEY_SEX = "sex";
-    /**
-     * 字典状态key
-     */
-    String DICT_KEY_ENABLED= "enabled";
-    /**
-     * 上传文件类型
-     */
-    List<String> IMG_TYPE = Arrays.asList("PNG","JPG","JPEG","BMP","GIF","SVG");
-    /**
-     * 上传视频类型
-     */
-    List<String> VIDEO_TYPE = Arrays.asList("MP4","AVI","WMV");
-    /**
-     * 可用状态
-     */
-    int USER_STATUS_AVAILABLE = 0;
-    /**
-     * 无效
-     */
-    int USABLE_INVALID = 1;
-    /**
-     * 有效
-     */
-    int USABLE_EFFECTIVE = 2;
-    /**
-     * 已发送
-     */
-    int SEND_HAS_BEEN_SENT = 2;
     /**
      * 默认密码
      */

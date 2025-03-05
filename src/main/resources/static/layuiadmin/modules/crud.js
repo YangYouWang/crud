@@ -28,7 +28,7 @@ layui.extend({
                     //文件流
                     data.append('file', file);
                     $.ajax({
-                        url: ctx + '/common/uploadImgMinIo',
+                        url: ctx + '/common/uploadFileMinIo',
                         type: 'POST',
                         data: data,
                         dataType: 'json',
@@ -159,82 +159,6 @@ layui.extend({
                     layer.close(index);
                     callback(result);
                 }
-            });
-        },
-        /**
-         * 普通视频上传
-         */
-        uploadVideo: function(obj) {
-            let uploadInst = upload.render({
-                elem: '#upload-video-btn'
-                ,url: ctx + '/common/uploadVideoMinIo'
-                ,accept: 'video'
-                ,before: function(obj){
-                    //预读本地文件示例，不支持ie8
-                    obj.preview(function(index, file, result){
-                        $('#upload-video').attr('src', result);
-                    });
-                }
-                ,choose: function(obj) {
-                    let files = obj.pushFile();
-                    console.log(files)
-                }
-                ,progress: function(e , percent) {
-                    console.log(e);
-                }
-                ,done: function(res){
-                    layer.msg(res.message);
-                    if (res.code === 200) {
-                        $("#" + obj).val(res.data.url);
-                    }
-                }
-                ,error: function(){
-                    //演示失败状态，并实现重传
-                    let uploadText = $('#upload-video-text');
-                    uploadText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                    uploadText.find('.demo-reload').on('click', function(){
-                        uploadInst.upload();
-                    });
-                }
-            });
-            $('#clear-video-btn').on('click',function () {
-                $('#upload-video').attr('src', '');
-                $("#" + obj).val('');
-                layer.msg('清除成功');
-            });
-        },
-        /**
-         * 普通图片上传
-         */
-        uploadImg: function(obj) {
-            let uploadInst = upload.render({
-                elem: '#upload-img-btn'
-                ,url: ctx + '/common/uploadImgMinIo'
-                ,before: function(obj){
-                    //预读本地文件示例，不支持ie8
-                    obj.preview(function(index, file, result){
-                        $('#upload-img').attr('src', result); //图片链接（base64）
-                    });
-                }
-                ,done: function(res){
-                    layer.msg(res.message);
-                    if (res.code === 200) {
-                        $("#" + obj).val(res.data.url);
-                    }
-                }
-                ,error: function(){
-                    //演示失败状态，并实现重传
-                    let uploadText = $('#upload-img-text');
-                    uploadText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                    uploadText.find('.demo-reload').on('click', function(){
-                        uploadInst.upload();
-                    });
-                }
-            });
-            $('#clear-img-btn').on('click',function () {
-                $('#upload-img').attr('src', '');
-                $("#" + obj).val('');
-                layer.msg('清除成功');
             });
         },
         /**
