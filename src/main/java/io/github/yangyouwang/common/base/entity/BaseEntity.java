@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -28,7 +30,8 @@ public abstract class BaseEntity {
 
     /** 创建时间 */
     @ApiModelProperty(value = "创建时间")
-    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", timezone="GMT+8")
+    @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
     @TableField(value = "create_time",fill = FieldFill.INSERT)
     private Date createTime;
 
@@ -39,7 +42,8 @@ public abstract class BaseEntity {
 
     /** 更新时间 */
     @ApiModelProperty(value = "更新时间")
-    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", timezone="GMT+8")
+    @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
     @TableField(value = "update_time",fill = FieldFill.UPDATE)
     private Date updateTime;
 
