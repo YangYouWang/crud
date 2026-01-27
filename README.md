@@ -90,6 +90,10 @@
 - application-test.yml（测试环境）
 - application-prod.yml（生产环境）
 
+## 线上预览
+[简约后台管理系统]<https://crud.dogex.info/>
+账号密码：admin/admin123
+
 ## 部分截图
 
 ![首页](src/main/resources/static/img/1.png)
