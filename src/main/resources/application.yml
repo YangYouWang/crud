@@ -124,3 +124,13 @@ xss:
   excludes:
   # 匹配链接
   urlPatterns: /system/*,/qrtz/*
+
+# 登录限制配置
+login:
+  rate:
+    limit:
+      enabled: true  # 是否启用速率限制
+      max-attempts: 5  # 最大尝试次数（默认：5）
+      block-duration-minutes: 30  # 阻止持续时间（分钟）（默认：30）
+      storage-type: redis  # 存储后端（redis 或 hashmap）
+      mode: ip  # 阻止模式（ip 或 account）

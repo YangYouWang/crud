@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn test)",
+      "Bash(mvn compile)",
+      "Bash(mvn spring-boot:run)",
+      "Bash(mvn compile package -DskipTests)",
+      "Bash(timeout 30)",
+      "Bash(taskkill /f /pid 23896)",
+      "Bash(taskkill /f /im \"java.exe\")",
+      "Bash(java -jar target/crud.jar)",
+      "Bash(timeout 45)"
+    ]
+  }
+}
